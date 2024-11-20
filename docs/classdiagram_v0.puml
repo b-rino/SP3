@@ -18,29 +18,14 @@ class MediaClient{
 -ArrayList<User> users
 -User currentUser
 -String userDataPath
--ArrayList<String> listOfActions
+-MediaActions ma
 -TextUI ui
 -FileIO io
 +Mediaclient(String name)
-+void createUser()
 +void setup()
-+void loadUserData()
++void loadUserDataFromFile()
 +void closeClient()
-+void runDialog()
 
-
-}
-
-class MainMenu {
-    + void searchMedia
-    + void searchCategory
-    + void watchList
-    + void savedContent
-}
-
-class StartMenu {
-    + void login
-    + void createUser
 
 }
 
@@ -54,16 +39,34 @@ class Series{
 +Series(String title, int year, String category, float rating, int episodes)
 }
 
+
+class MediaActions{
++MediaActions(ArrayList<String> mediaList)
++pauseMedia()
++playMedia()
++exitMedia()
++saveToWatchLater()
++removeFromWatchLater()
++saveToWatchAgain()
++searchMediaList()
+}
+
 class User{
 -String name
 -int age
--Account account
+-String username
+-String password
+-ArrayList<String> watchLater
+-ArrayList<String> watchAgain
++User(String name, int age)
++createUser()
++deleteUser()
++login()
+'+logout() nok ikke nødvendig
++setUsername()
++setPassword()
 }
 
-class Account{
-- string username
-- string password
-}
 
 package "util" {
 class TextUI{
@@ -76,8 +79,10 @@ class TextUI{
 +boolean promptBinary(String msg)
 }
 class FileIO{
+'+void addMediaToFile(Media media, String path)
+'+void removeMediaFromFile(Media media, String path)
 +ArrayList<String> readUserData(String path)
-+void saveData(ArrayList<User> users, String path)
++void saveUserData(ArrayList<User> users, String path)
 }
 }
 
@@ -86,10 +91,9 @@ Media<|--Series
 Media <|-- Movie
 MediaClient *-- User
 Main *-- MediaClient
-MediaClient *-- MainMenu
-MediaClient *-- StartMenu
 MediaClient *-- "util"
-User *-- Account
+MediaClient *-- MediaActions
+
 
 
 

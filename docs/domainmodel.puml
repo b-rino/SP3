@@ -4,16 +4,17 @@ object MediaClient
 object Media
 object Series
 object Movie
-object Account
 object User
+object MediaActions
 
 
 
 MediaClient*-- User
 MediaClient *-- Media
+MediaClient *-- MediaActions
 Media <|-- Movie
 Media <|-- Series
-User *-- Account
+
 
 
 
