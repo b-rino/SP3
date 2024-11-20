@@ -15,6 +15,8 @@ class Media{
 
 class MediaClient{
 -String name
+-ArrayList<Media> movieList
+-ArrayList<Media> seriesList
 -ArrayList<User> users
 -User currentUser
 -String userDataPath
@@ -23,6 +25,8 @@ class MediaClient{
 -FileIO io
 +Mediaclient(String name)
 +void setup()
++void loadMovieDataFromFile()
++void loadSeriesDataFromFile()
 +void loadUserDataFromFile()
 +void closeClient()
 
@@ -43,12 +47,14 @@ class Series{
 class MediaActions{
 +MediaActions(ArrayList<String> mediaList)
 +pauseMedia()
-+playMedia()
++playMedia() //auto save til watchAgain
 +exitMedia()
 +saveToWatchLater()
 +removeFromWatchLater()
-+saveToWatchAgain()
-+searchMediaList()
++searchByCategory()
++searchByName()
++displayWatchAgain()
++displayWatchLater()
 }
 
 class User{
