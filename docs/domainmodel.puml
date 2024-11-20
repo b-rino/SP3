@@ -1,25 +1,20 @@
 @startuml
 
-object Main
-object User
+object MediaClient
 object Media
 object Series
 object Movie
 object Account
-object Menu
-object StartMenu
-object MainMenu
+object User
 
 
 
-Menu *-- User
-Menu *-- Media
+MediaClient*-- User
+MediaClient *-- Media
 Media <|-- Movie
 Media <|-- Series
 User *-- Account
-Main *-- Menu
-Menu *-- StartMenu
-Menu *-- MainMenu
+
 
 
 

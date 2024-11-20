@@ -1,4 +1,4 @@
-public class Film {
+public class Movie {
 
     private String title;
     private int year;

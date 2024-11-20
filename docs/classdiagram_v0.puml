@@ -4,14 +4,30 @@ class Main{
 }
 
 class Media{
-- string title
-- string category
-- float rating
+- String title
 - int year
+- String category
+- float rating
++Media(String title, int year, String category, float rating)
+
 
 }
 
-class Menu{
+class MediaClient{
+-String name
+-ArrayList<User> users
+-User currentUser
+-String userDataPath
+-ArrayList<String> listOfActions
+-TextUI ui
+-FileIO io
++Mediaclient(String name)
++void createUser()
++void setup()
++void loadUserData()
++void closeClient()
++void runDialog()
+
 
 }
 
@@ -35,9 +51,16 @@ class Movie{
 class Series{
 - int episodes
 - int seasons
++Series(String title, int year, String category, float rating, int episodes)
 }
 
 class User{
+-String name
+-int age
+-Account account
+}
+
+class Account{
 - string username
 - string password
 }
@@ -58,13 +81,15 @@ class FileIO{
 }
 }
 
-Menu *-- Media
+MediaClient *-- Media
 Media<|--Series
 Media <|-- Movie
-Menu *-- User
-Main *-- Menu
-Menu <|-- MainMenu
-Menu <|-- StartMenu
+MediaClient *-- User
+Main *-- MediaClient
+MediaClient *-- MainMenu
+MediaClient *-- StartMenu
+MediaClient *-- "util"
+User *-- Account
 
 
 
