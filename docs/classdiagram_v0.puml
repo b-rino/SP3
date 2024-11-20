@@ -1,0 +1,51 @@
+@startuml
+class Main{
++ static void main(String[] args)
+}
+
+class Media{
+- string title
+- string category
+- float rating
+- int year
+
+}
+
+class Movie{
+}
+
+class Series{
+- int episodes
+- int seasons
+}
+
+class User{
+- string username
+- string password
+}
+
+package "util" {
+class TextUI{
+- Scanner scanner
+
++void displayMsg(String s)
++int promptNumeric(String msg)
++String promptText(String msg)
++int promptChoice(String msg, ArrayList<String> list)
++boolean promptBinary(String msg)
+}
+class FileIO{
++ArrayList<String> readUserData(String path)
++void saveData(ArrayList<User> users, String path)
+}
+}
+
+Main *-- Media
+Media<|--Series
+Media <|-- Movie
+Main *-- User
+
+
+
+
+@enduml

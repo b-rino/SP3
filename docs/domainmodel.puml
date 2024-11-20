@@ -1,11 +1,25 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+object Main
+object User
+object Media
+object Series
+object Movie
+object Account
+object Menu
+object StartMenu
+object MainMenu
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Main*--Media
+Main *-- User
+Media <|-- Movie
+Media <|-- Series
+User *-- Account
+Main *-- Menu
+Menu *-- StartMenu
+Menu *-- MainMenu
+
+
+
 @enduml
