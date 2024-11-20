@@ -9,6 +9,7 @@ class Media{
 - String category
 - float rating
 +Media(String title, int year, String category, float rating)
++getMediaDetails()
 
 
 }

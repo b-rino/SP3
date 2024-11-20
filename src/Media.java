@@ -11,6 +11,10 @@ public class Media {
         this.rating = rating;
     }
 
+    public String getMediaDetails(Media media) {
+        return this.title + this.year + this. category + this.rating;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }

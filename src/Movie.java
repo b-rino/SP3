@@ -9,5 +9,9 @@ public class Movie extends Media{
         super(title, year, category, rating);
     }
 
+    public String getMediaDetails(Media media) {
+        return super.getMediaDetails(media);
+    }
+
 
 }

@@ -13,6 +13,10 @@ public class Series extends Media {
         this.episodes = episodes;
     }
 
+    @Override
+    public String getMediaDetails(Media media) {
+        return super.getMediaDetails(media) + this.seasons + this.episodes;
+    }
 
     public void setSeasons(int seasons) {
         this.seasons = seasons;
