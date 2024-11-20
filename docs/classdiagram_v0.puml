@@ -58,10 +58,10 @@ class FileIO{
 }
 }
 
-Main *-- Media
+Menu *-- Media
 Media<|--Series
 Media <|-- Movie
-Main *-- User
+Menu *-- User
 Main *-- Menu
 Menu <|-- MainMenu
 Menu <|-- StartMenu

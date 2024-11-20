@@ -11,8 +11,9 @@ object StartMenu
 object MainMenu
 
 
-Main*--Media
-Main *-- User
+
+Menu *-- User
+Menu *-- Media
 Media <|-- Movie
 Media <|-- Series
 User *-- Account
