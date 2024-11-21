@@ -1,4 +1,6 @@
 @startuml
+!pragma layout smetana
+
 class Main{
 + static void main(String[] args)
 }

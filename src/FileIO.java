@@ -46,5 +46,23 @@ public class FileIO {
         }
     }
 
+    public static List<String[]> readMediaData (String path){
+        List<String[]> mediaData = new ArrayList<>();
+        File file = new File(path);
+        try {
+            Scanner scan = new Scanner(file);
+            scan.nextLine();//skip header
+
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();// "tess, 40000". Needs to split on ";" instead of comma
+                String[] splitData = line.split(";");
+                mediaData.add(splitData);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found");
+        }
+        return mediaData;
+    }
+
 
 }
