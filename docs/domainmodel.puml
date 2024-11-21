@@ -12,8 +12,8 @@ object MediaActions
 MediaClient*-- User
 MediaClient *-- Media
 MediaClient *-- MediaActions
-Media <|-- Movie
-Media <|-- Series
+Media <|--"100" Movie
+Media <|--"100" Series
 
 
 

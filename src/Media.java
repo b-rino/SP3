@@ -1,26 +1,26 @@
 public class Media {
     private String title;
-    private int year;
+    private int releaseYear;
     private String category;
     private float rating;
 
-    public Media(String title, int year, String category, float rating) {
+    public Media(String title, int releaseYear, String category, float rating) {
         this.title = title;
-        this.year = year;
+        this.releaseYear = releaseYear;
         this.category = category;
         this.rating = rating;
     }
 
     public String getMediaDetails(Media media) {
-        return this.title + this.year + this. category + this.rating;
+        return this.title + this.releaseYear + this. category + this.rating;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     public void setCategory(String category) {
@@ -35,8 +35,8 @@ public class Media {
         return title;
     }
 
-    public int getYear() {
-        return year;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
     public String getCategory() {
