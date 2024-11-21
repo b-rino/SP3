@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    public static ArrayList<String[]> readUserData(String path) {
-        ArrayList<String[]> data = new ArrayList<>();
+    public static List<String[]> readUserData(String path) {
+        List<String[]> data = new ArrayList<>();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
@@ -30,10 +30,11 @@ public class FileIO {
 
     public static void saveData(List<String> items, String path, String header) {
         try {
+            // Header should allow to split on ";".
             FileWriter writer = new FileWriter(path);
-            writer.write(header + "\n"); // Giv csv filen en header
+            writer.write(header + "\n");
             for (String s : items) {
-                writer.write(s + "\n"); //"Tess, 40000";
+                writer.write(s + "\n"); //"Title; year; genre; rating"
             }
             writer.close();
         } catch (IOException e) {
@@ -41,28 +42,5 @@ public class FileIO {
         }
     }
 
-    /*
-    public String[] readBoardData(String path, int length) {
-        String[] data = new String[length];
-        File file = new File(path);
-        int counter = 0;
 
-        try {
-            Scanner scan = new Scanner(file);
-            scan.nextLine();
-
-            while (scan.hasNextLine()) {
-                String line = scan.nextLine();
-                data[counter] = line;
-                counter++;
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("File was not found");
-        }
-        return data;
-
-    }
-
-     */
 }
