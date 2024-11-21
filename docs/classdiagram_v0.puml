@@ -61,15 +61,20 @@ class User{
 -int age
 -String username
 -String password
+-boolean adult
 -ArrayList<String> watchLater
 -ArrayList<String> watchAgain
-+User(String name, int age)
 +createUser()
-+deleteUser()
 +login()
 '+logout()
 +setUsername()
 +setPassword()
++setAge()
++setName()
++getName()
++getAge()
++getUsername()
++getPassword()
 }
 
 
