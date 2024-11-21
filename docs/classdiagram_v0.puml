@@ -20,7 +20,6 @@ class MediaClient{
 -List<User> users
 -User currentUser
 -String userDataPath
--MediaActions ma
 -TextUI ui
 -FileIO io
 +Mediaclient(String name)
@@ -30,7 +29,7 @@ class MediaClient{
 +void loadUserDataFromFile()
 +void closeClient()
 +void menu()
-+MediaActions(ArrayList<String> mediaList)
++(ArrayList<String> mediaList)
 +playMedia()
 +saveToWatchLater()
 +removeFromWatchLater()
