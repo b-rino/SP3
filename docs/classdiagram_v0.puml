@@ -30,7 +30,7 @@ class MediaClient{
 +void loadSeriesDataFromFile()
 +void loadUserDataFromFile()
 +void closeClient()
-
++void menu()
 
 }
 
@@ -47,9 +47,7 @@ class Series{
 
 class MediaActions{
 +MediaActions(ArrayList<String> mediaList)
-+pauseMedia()
-+playMedia() //auto save til watchAgain
-+exitMedia()
++playMedia()
 +saveToWatchLater()
 +removeFromWatchLater()
 +searchByCategory()
@@ -69,7 +67,7 @@ class User{
 +createUser()
 +deleteUser()
 +login()
-'+logout() nok ikke nødvendig
+'+logout()
 +setUsername()
 +setPassword()
 }
