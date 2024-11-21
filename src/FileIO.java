@@ -10,16 +10,17 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    public static ArrayList<String> readUserData(String path) {
-        ArrayList<String> data = new ArrayList();
+    public static ArrayList<String[]> readUserData(String path) {
+        ArrayList<String[]> data = new ArrayList<>();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
 
             while (scan.hasNextLine()) {
-                String line = scan.nextLine(); // "tess, 40000"
-                data.add(line);
+                String line = scan.nextLine();// "tess, 40000". Needs to split on ";" instead of comma
+                String[] splitData = line.split(";");
+                data.add(splitData);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
@@ -30,7 +31,7 @@ public class FileIO {
     public static void saveData(List<String> items, String path, String header) {
         try {
             FileWriter writer = new FileWriter(path);
-            writer.write(header + "\n"); //Giv csv filen en header
+            writer.write(header + "\n"); // Giv csv filen en header
             for (String s : items) {
                 writer.write(s + "\n"); //"Tess, 40000";
             }
@@ -40,6 +41,7 @@ public class FileIO {
         }
     }
 
+    /*
     public String[] readBoardData(String path, int length) {
         String[] data = new String[length];
         File file = new File(path);
@@ -61,4 +63,6 @@ public class FileIO {
         return data;
 
     }
+
+     */
 }
