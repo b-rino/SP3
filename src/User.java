@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class User {
-    FileIO io;
-    TextUI ui;
+    FileIO io = new FileIO();
+    TextUI ui = new TextUI();
     private String name;
     private int age;
     private String password;
@@ -15,7 +15,7 @@ public class User {
     private List<Media> seriesList;
     private boolean adult = true;
     //private HashMap<String, String> userCredentials;
-    private String path = "userdata.txt";
+    private String path = "data\\userdata.txt";
 
     public User(){
         this.movieList = new ArrayList<Media>();
@@ -31,7 +31,16 @@ public class User {
         ArrayList<String> savedData = new ArrayList<>();
         savedData.add(this.username);
         savedData.add(this.password);
-        io.saveData(savedData, this.path, "username; password");
+        io.saveData(savedData, this.path, "username, password");
+    }
+
+    public void login(){
+        String loginUsername = ui.promptText("Please enter your username");
+        if(!this.path.contains(loginUsername)){
+            String loginPassword = ui.promptText("Please enter your password");
+        }
+        String loginPassword = ui.promptText("Please enter your password");
+        if()
     }
 
     public void setAge(int age) {

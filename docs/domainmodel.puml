@@ -5,13 +5,13 @@ object Media
 object Series
 object Movie
 object User
-object MediaActions
+
 
 
 
 MediaClient*-- User
 MediaClient *-- Media
-MediaClient *-- MediaActions
+
 Media <|--"100" Movie
 Media <|--"100" Series
 

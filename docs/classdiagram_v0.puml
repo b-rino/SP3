@@ -16,9 +16,8 @@ class Media{
 
 class MediaClient{
 -String name
--ArrayList<Media> movieList
--ArrayList<Media> seriesList
--ArrayList<User> users
+-List<Media> mediaList
+-List<User> users
 -User currentUser
 -String userDataPath
 -MediaActions ma
@@ -31,6 +30,15 @@ class MediaClient{
 +void loadUserDataFromFile()
 +void closeClient()
 +void menu()
++MediaActions(ArrayList<String> mediaList)
++playMedia()
++saveToWatchLater()
++removeFromWatchLater()
++searchByCategory()
++searchByName()
++displayWatchAgain()
++displayWatchLater()
+
 
 }
 
@@ -44,17 +52,6 @@ class Series{
 +Series(String title, int year, String category, float rating, int episodes)
 }
 
-
-class MediaActions{
-+MediaActions(ArrayList<String> mediaList)
-+playMedia()
-+saveToWatchLater()
-+removeFromWatchLater()
-+searchByCategory()
-+searchByName()
-+displayWatchAgain()
-+displayWatchLater()
-}
 
 class User{
 -String name
@@ -85,14 +82,15 @@ class TextUI{
 +void displayMsg(String s)
 +int promptNumeric(String msg)
 +String promptText(String msg)
-+int promptChoice(String msg, ArrayList<String> list)
 +boolean promptBinary(String msg)
 }
 class FileIO{
 '+void addMediaToFile(Media media, String path)
 '+void removeMediaFromFile(Media media, String path)
-+ArrayList<String> readUserData(String path)
++ArrayList<User> readUserData(String path)
 +void saveUserData(ArrayList<User> users, String path)
++ArrayList<Media> readMediaData(String path)
++void saveMediaData
 }
 }
 
@@ -102,7 +100,7 @@ Media <|-- Movie
 MediaClient *-- User
 Main *-- MediaClient
 MediaClient *-- "util"
-MediaClient *-- MediaActions
+
 
 
 
