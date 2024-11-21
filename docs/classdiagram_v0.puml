@@ -1,4 +1,6 @@
 @startuml
+!pragma layout smetana
+
 class Main{
 + static void main(String[] args)
 }
@@ -24,9 +26,8 @@ class MediaClient{
 -FileIO io
 +Mediaclient(String name)
 +void setup()
-+void loadMovieDataFromFile()
-+void loadSeriesDataFromFile()
-+void loadUserDataFromFile()
++void loadMediaDataFromFile(String path)
++void loadUserDataFromFile(String path)
 +void closeClient()
 +void menu()
 +(ArrayList<String> mediaList)
