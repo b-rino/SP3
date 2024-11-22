@@ -15,7 +15,7 @@ public class Media {
     }
 
     public String getMediaDetails(Media media) {
-        return this.title + this.releaseYear + this. category + this.rating;
+        return this.title + this.releaseYear + this.category + this.rating;
     }
 
 
@@ -31,9 +31,6 @@ public class Media {
         this.category = category;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
 
     public String getTitle() {
         return title;
@@ -47,7 +44,10 @@ public class Media {
         return category;
     }
 
-    public float getRating() {
-        return rating;
+    @Override
+    public String toString() {
+        return "Title: " + title + ", Year: " + releaseYear + ", Category: " + category + ", Rating: " + rating;
     }
 }
+
+

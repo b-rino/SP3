@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Series extends Media {
 
     private String title;
-    private int year;
+    private int releaseYear;
     private String category;
     private float rating;
     private int seasons;
@@ -28,4 +28,8 @@ public class Series extends Media {
         this.episodes = episodes;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", Seasons: " + seasons + ", Episodes: " + episodes;
+    }
 }

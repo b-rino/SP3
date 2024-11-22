@@ -6,9 +6,9 @@ public class Main {
     public static void main(String[] args) {
 
         FileIO fileIO = new FileIO();
-        List<String[]> test = fileIO.readMediaData(enumPathing.COMBI);
-        for (String[] entry : test) {
-            System.out.println(String.join(", ", entry));
+        List<Media> test = fileIO.readMediaData(enumPathing.SERIES);
+        for (Media media : test) {
+            System.out.println(media);
         }
     }
 }

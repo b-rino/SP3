@@ -42,6 +42,9 @@ class MediaList{
 }
 
 class UserList{
+-String username
+-String password
+-boolean adult
 +setUsername()
 +setPassword()
 +setAge()
@@ -67,9 +70,6 @@ class Series{
 
 
 class UserClient{
--String username
--String password
--boolean adult
 -TextUI ui
 -FileIO io
 +createUser()
