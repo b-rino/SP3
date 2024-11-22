@@ -40,7 +40,7 @@ public class User {
             String loginPassword = ui.promptText("Please enter your password");
         }
         String loginPassword = ui.promptText("Please enter your password");
-        if()
+        //if();
     }
 
     public void setAge(int age) {
