@@ -35,16 +35,12 @@ public class User {
     }
 
     public void login(){
-        ArrayList<User> loadedUsers = MediaClient.loadUserDataFromFile();
         String loginUsername = ui.promptText("Please enter your username");
-        if(loadedUsers.contains(loginUsername)) {
+        if(!this.path.contains(loginUsername)){
             String loginPassword = ui.promptText("Please enter your password");
-            if(this.path.contains(loginPassword)) {
-                System.out.println("Login successful");
-            }
         }
-        System.out.println("Login unsuccessful - try again!");
-        login();
+        String loginPassword = ui.promptText("Please enter your password");
+        //if();
     }
 
     public void setAge(int age) {
