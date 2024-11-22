@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public abstract class Media {
     private String title;
     private int releaseYear;
     private String category;
     private float rating;
+    private FileIO fileIO;
 
     public Media(String title, int releaseYear, String category, float rating) {
         this.title = title;
@@ -14,6 +17,8 @@ public abstract class Media {
     public String getMediaDetails(Media media) {
         return this.title + this.releaseYear + this. category + this.rating;
     }
+
+    public abstract ArrayList<String> createMedia(String path);
 
     public void setTitle(String title) {
         this.title = title;

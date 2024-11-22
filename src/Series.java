@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Series extends Media {
 
     private String title;
@@ -6,6 +8,7 @@ public class Series extends Media {
     private float rating;
     private int seasons;
     private int episodes;
+    private String path = "data\\series.txt";
 
     public Series(String title, int releaseYear, String category, float rating, int seasons, int episodes) {
         super(title, releaseYear, category, rating);
@@ -24,6 +27,11 @@ public class Series extends Media {
 
     public void setEpisodes(int episodes) {
         this.episodes = episodes;
+    }
+
+    @Override
+    public ArrayList<String> createMedia(String path){
+        path = this.path;
     }
 
     public int getSeasons() {
