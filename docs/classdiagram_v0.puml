@@ -5,6 +5,10 @@ class Main{
 + static void main(String[] args)
 }
 
+class Client{
++void setup()
+}
+
 class Media{
 - String title
 - int year
@@ -21,9 +25,8 @@ class MediaClient{
 -TextUI ui
 -FileIO io
 +Mediaclient(String name)
-+void setup()
 +void closeClient()
-+void menu()
++void mediaMenu()
 +(ArrayList<String> mediaList)
 
 }
@@ -72,7 +75,6 @@ class UserClient{
 +createUser()
 +login()
 
-
 '+logout()
 }
 
@@ -96,14 +98,16 @@ class FileIO{
 }
 }
 
-MediaClient *-- Media
+MediaList *-- Media
 Media<|--Series
 Media <|-- Movie
-Main *-- MediaClient
+Client *-- MediaClient
 MediaClient *-- "util"
-MediaClient *-- MediaList
-Main *-- UserClient
-UserClient *-- UserList
+MediaClient -- MediaList
+Client *-- UserClient
+UserClient -- UserList
 UserClient *--"util"
+Main *-- Client
+Client *-- "util"
 
 @enduml
