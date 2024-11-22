@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Media {
+public class Media {
     private String title;
     private int releaseYear;
     private String category;
@@ -18,7 +18,6 @@ public abstract class Media {
         return this.title + this.releaseYear + this. category + this.rating;
     }
 
-    public abstract ArrayList<String> createMedia(String path);
 
     public void setTitle(String title) {
         this.title = title;

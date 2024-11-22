@@ -18,19 +18,17 @@ class Media{
 
 class MediaClient{
 -String name
--List<Media> mediaList
--List<User> users
--User currentUser
--String userDataPath
 -TextUI ui
 -FileIO io
 +Mediaclient(String name)
 +void setup()
-+void loadMediaDataFromFile(String path)
-+void loadUserDataFromFile(String path)
 +void closeClient()
 +void menu()
 +(ArrayList<String> mediaList)
+
+}
+class MediaList{
+-List<Media> mediaList
 +playMedia()
 +saveToWatchLater()
 +removeFromWatchLater()
@@ -38,8 +36,20 @@ class MediaClient{
 +searchByName()
 +displayWatchAgain()
 +displayWatchLater()
+}
 
-
+class UserList{
++setUsername()
++setPassword()
++setAge()
++setName()
++getName()
++getAge()
++getUsername()
++getPassword()
+-ArrayList<String> watchLater
+-ArrayList<String> watchAgain
+-List<User> users
 }
 
 
@@ -53,25 +63,17 @@ class Series{
 }
 
 
-class User{
--String name
--int age
+class UserClient{
 -String username
 -String password
 -boolean adult
--ArrayList<String> watchLater
--ArrayList<String> watchAgain
+-TextUI ui
+-FileIO io
 +createUser()
 +login()
+
+
 '+logout()
-+setUsername()
-+setPassword()
-+setAge()
-+setName()
-+getName()
-+getAge()
-+getUsername()
-+getPassword()
 }
 
 
@@ -90,20 +92,18 @@ class FileIO{
 +ArrayList<User> readUserData(String path)
 +void saveUserData(ArrayList<User> users, String path)
 +ArrayList<Media> readMediaData(String path)
-+void saveMediaData
+'+void saveMediaData
 }
 }
 
 MediaClient *-- Media
 Media<|--Series
 Media <|-- Movie
-MediaClient *-- User
 Main *-- MediaClient
 MediaClient *-- "util"
-
-
-
-
-
+MediaClient *-- MediaList
+Main *-- UserClient
+UserClient *-- UserList
+UserClient *--"util"
 
 @enduml

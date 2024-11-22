@@ -8,7 +8,20 @@ import java.util.*;
 
 public class FileIO {
 
-    public static List<String[]> readUserData(String path) {
+    private String pathSeries = "data\\series.txt";
+    private String pathMovie = "data\\movie.txt";
+    private String pathUser = "data\\userdata.txt";
+    private String pathCombi = "data\\allmedia.txt";
+
+    //TODO Switch-case bør laves i denne metode
+    public List<String[]> readMediaData(enumPathing ePath) {
+        String path = null;
+        if(ePath == enumPathing.MOVIE )
+            path = this.pathMovie;
+        if (ePath == enumPathing.SERIES)
+            path = this.pathSeries;
+        if (ePath == enumPathing.COMBI)
+            path = this.pathCombi;
         List<String[]> data = new ArrayList<>();
         File file = new File(path);
         try {
@@ -43,8 +56,11 @@ public class FileIO {
             System.out.println("something went wrong when writing to file");
         }
     }
-    public static HashSet<mediaClient> readMediaData (String path){
-        HashSet<String[]> mediaData = new HashSet<>();
+    public List<String[]> readUserData(enumPathing ePath) {
+        String path = null;
+        if(ePath == enumPathing.USER )
+            path = this.pathUser;
+        List<String[]> data = new ArrayList<>();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
@@ -53,27 +69,11 @@ public class FileIO {
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();// "tess, 40000". Needs to split on ";" instead of comma
                 String[] splitData = line.split(";");
-            if (splitData.length >= 6) {
-                String title = splitData[0].trim();
-                int year = Integer.parseInt(splitData[1].trim());
-                String category = splitData[2].trim();
-                double rating = Double.parseDouble(splitData[3].trim());
-                int seasons = Integer.parseInt(splitData[4].trim());
-                int episodes = Integer.parseInt(splitData[5].trim());
-                // lavet ved hjælp af chat og matador i matador havde vi ingen abstrakte klasser
-
-                Media mediaClient = new Media(title,year,category,rating,seasons,episodes);
-                mediaData.add(mediaClient);
-                // løsningen kan være at lave det via. mediaclienten og ikke den abstrate media klasse
-
-            }
+                data.add(splitData);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
         }
-
-        return mediaData;
-        // vi kan ikke lave objekter af Media, fordi den er abstrakt klasse..
+        return data;
     }
-
 }

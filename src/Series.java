@@ -8,7 +8,6 @@ public class Series extends Media {
     private float rating;
     private int seasons;
     private int episodes;
-    private String path = "data\\series.txt";
 
     public Series(String title, int releaseYear, String category, float rating, int seasons, int episodes) {
         super(title, releaseYear, category, rating);
@@ -29,16 +28,4 @@ public class Series extends Media {
         this.episodes = episodes;
     }
 
-    @Override
-    public ArrayList<String> createMedia(String path){
-        path = this.path;
-    }
-
-    public int getSeasons() {
-        return seasons;
-    }
-
-    public int getEpisodes() {
-        return episodes;
-    }
 }
