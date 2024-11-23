@@ -32,8 +32,7 @@ public class MediaIO implements FileIO<Media>{
                 String line = scan.nextLine();
                 String[] splitData = line.split(";");
 
-                //Mangler Combi. kan fixes med If statement
-                if(ePath == enumPathing.MOVIE){
+                if(splitData.length == 4 && (ePath == enumPathing.MOVIE || ePath == enumPathing.COMBI)){
                     String title = splitData[0].trim();
                     int year = Integer.parseInt(splitData[1].trim());
                     String category = splitData[2].trim();
@@ -42,7 +41,7 @@ public class MediaIO implements FileIO<Media>{
                     Movie movie = new Movie(title, year, category, rating);
                     mediaList.add(movie);
                 }
-                if(ePath == enumPathing.SERIES){
+                if(splitData.length  == 6 && (ePath == enumPathing.SERIES || ePath == enumPathing.COMBI)){
                     String title = splitData[0].trim();
                     int year = Integer.parseInt(splitData[1].trim());
                     String category = splitData[2].trim();
