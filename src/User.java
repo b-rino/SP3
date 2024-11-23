@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class User {
-    FileIO io = new FileIO();
+    UserIO UserIO = new UserIO();
     TextUI ui = new TextUI();
     private String name;
     private int age;
@@ -17,13 +18,15 @@ public class User {
     //private HashMap<String, String> userCredentials;
     private String path = "data\\userdata.txt";
 
-    public User(){
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
         this.movieList = new ArrayList<Media>();
         this.seriesList = new ArrayList<Media>();
         //this.userCredentials = new HashMap<>();
     }
 
-    public void createUser(){
+    /*public void createUser(){
         setUsername();
         setPassword();
         //userCredentials.put(this.username, this.password); flex only
@@ -31,8 +34,8 @@ public class User {
         ArrayList<String> savedData = new ArrayList<>();
         savedData.add(this.username);
         savedData.add(this.password);
-        io.saveData(savedData, this.path, "username, password");
-    }
+        io.saveData(savedData, USER, "username, password");
+    }*/
 
     public void login(){
         String loginUsername = ui.promptText("Please enter your username");
@@ -100,5 +103,10 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    @Override
+    public String toString() {
+        return "Username: " + username + " Password: " + password;
     }
 }

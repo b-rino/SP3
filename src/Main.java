@@ -5,10 +5,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        FileIO fileIO = new FileIO();
-        List<Media> test = fileIO.readMediaData(enumPathing.SERIES);
-        for (Media media : test) {
+        MediaIO mediaIO = new MediaIO();
+        UserIO userIO = new UserIO();
+        List<User> userTest = userIO.readData(enumPathing.USER);
+        List<Media> mediaTest = mediaIO.readData(enumPathing.COMBI);
+        for (Media media : mediaTest) {
             System.out.println(media);
         }
+      /*  for (User user : userTest) {
+            System.out.println(user);
+        }*/
     }
 }
