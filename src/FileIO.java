@@ -62,18 +62,19 @@ public class FileIO {
     public static void saveData(List<String> items, String path, String header) {
         try {
             // Header should allow to split on ";".
+            File file = new File(path);
             FileWriter writer = new FileWriter(path, true);
-            if(new File(path).length() == 0) {
+            if(file.length() == 0) {
                 writer.write(header + "\n");
             }
             writer.write("\n");
             for (String s : items) {
-                writer.write(s + "; ");//"Title; year; genre; rating"
+                writer.write(String.join("; ",items ) + "\n");//"Title; year; genre; rating"
             }
-
             writer.close();
         } catch (IOException e) {
-            System.out.println("something went wrong when writing to file");
+            System.out.println("something went wrong when writing to file" + e.getMessage());
+            e.printStackTrace();
         }
     }
     public List<String[]> readUserData(enumPathing ePath) {

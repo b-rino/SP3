@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +31,16 @@ public class MediaList {
         // todo skal kunne søge efter en film i media
     }
 
-    public void disPlayWatchAgain(){
+    public void displayWatchAgain(){
         // todo skal kunne hente fra filen der er gemt af sete film
     }
 
     public void displayWatchLater(){
         // todo skal vise users liste
+    }
+
+    public static void welcome(){
+        String welcometext = "Welcome to Chill";
+        JOptionPane.showMessageDialog(null, welcometext);
     }
 }
