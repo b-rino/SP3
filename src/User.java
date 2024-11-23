@@ -34,6 +34,8 @@ public class User {
         savedData.add(this.username);
         savedData.add(this.password);
         io.saveData(savedData, this.path, "username, password");
+        //todo: Få SaveData til at virke - jeg har spurgt chat og den siger det burde virke
+        // jeg har kørt debud på den også og der skulle ikke være nogen fejl?
     }
 
     public void login() {
@@ -70,7 +72,7 @@ public class User {
     }
 
     public void setPassword() {
-        /*
+        /* kan ikke få "frame" til at gå væk efter man har tastet password
         JFrame passwordFrame = new JFrame("Eksempel for password");
         JPasswordField passwordField = new JPasswordField();
         JLabel passwordLabel = new JLabel("Password");
