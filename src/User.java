@@ -23,7 +23,6 @@ public class User {
         this.password = password;
         this.movieList = new ArrayList<Media>();
         this.seriesList = new ArrayList<Media>();
-        //this.userCredentials = new HashMap<>();
     }
 
     /*public void createUser(){

@@ -8,6 +8,8 @@ public class MediaIO implements FileIO<Media>{
     private String pathSeries = "data\\series.txt";
     private String pathMovie = "data\\movie.txt";
     private String pathCombi = "data\\allmedia.txt";
+    private String pathWatchAgain = "data\\watchAgain.txt";
+    private String pathWatchLater = "data\\watchLater.txt";
 
     public List<Media> readData(enumPathing ePath) {
         String path = null;
@@ -21,8 +23,15 @@ public class MediaIO implements FileIO<Media>{
             case COMBI:
                 path = this.pathCombi;
                 break;
+            case WATCHAGAIN:
+                path = this.pathWatchAgain;
+                break;
+            case WATCHLATER:
+                path = this.pathWatchLater;
+                break;
         }
         List<Media> mediaList = new ArrayList<>();
+        List<User> userList = new ArrayList<>();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
@@ -52,6 +61,7 @@ public class MediaIO implements FileIO<Media>{
                     Series series = new Series(title, year, category, rating, season, episode);
                     mediaList.add(series);
                 }
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");

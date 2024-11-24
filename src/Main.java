@@ -8,12 +8,12 @@ public class Main {
         MediaIO mediaIO = new MediaIO();
         UserIO userIO = new UserIO();
         List<User> userTest = userIO.readData(enumPathing.USER);
-        List<Media> mediaTest = mediaIO.readData(enumPathing.COMBI);
+        List<Media> mediaTest = mediaIO.readData(enumPathing.MOVIE);
         for (Media media : mediaTest) {
             System.out.println(media);
         }
-      /*  for (User user : userTest) {
+      for (User user : userTest) {
             System.out.println(user);
-        }*/
+        }
     }
 }

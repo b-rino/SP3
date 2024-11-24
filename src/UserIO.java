@@ -21,7 +21,7 @@ public class UserIO implements FileIO<User> {
             scan.nextLine();//skip header
 
             while (scan.hasNextLine()) {
-                String line = scan.nextLine();// "tess, 40000". Needs to split on ";" instead of comma
+                String line = scan.nextLine();
                 String[] splitData = line.split(";");
                 String username = splitData[0];
                 String password = splitData[1];
@@ -43,7 +43,7 @@ public class UserIO implements FileIO<User> {
             }
             writer.write("\n");
             for (User user : userData) {
-                writer.write(user.toString() + "; ");//"Title; year; genre; rating"
+                writer.write(user.toString() + "; ");
             }
 
             writer.close();
