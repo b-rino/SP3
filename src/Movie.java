@@ -12,9 +12,6 @@ public class Movie extends Media{
         super(title, releaseYear, category, rating);
     }
 
-    public String getMediaDetails(Media media) {
-        return super.getMediaDetails(media);
-    }
 
 
 }

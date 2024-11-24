@@ -1,18 +1,27 @@
 import java.util.ArrayList;
 
-/*public class UserClient {
+public class UserClient {
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
 
-    public void createUser(){
+    public void createUser() {
 
-        userlist.setUsername();
+      /*  userlist.setUsername();
         userlist.setPassword();
         //userCredentials.put(this.username, this.password); flex only
         ui.displayMsg("You have successfully created a user and are now logged in");
-        ArrayList<String> savedData = new ArrayList<>();
-        savedData.add(this.username);
-        savedData.add(this.password);
-        io.saveData(savedData, this.path, "username, password");
-    }*/
-//}
+        List<User> saveUserData = new ArrayList<>();
+        saveUserData.add(this.username);
+        saveUserData.add(this.password);
+        io.saveData(savedData, enumPathing.USER, "username, password");
+    }
+
+    public void login(){
+        String loginUsername = ui.promptText("Please enter your username");
+        if(!this.path.contains(loginUsername)){
+            String loginPassword = ui.promptText("Please enter your password");
+        }
+        String loginPassword = ui.promptText("Please enter your password");
+        //if();*/
+    }
+}

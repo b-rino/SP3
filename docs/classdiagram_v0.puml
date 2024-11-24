@@ -15,8 +15,6 @@ class Media{
 - String category
 - float rating
 +Media(String title, int year, String category, float rating)
-+getMediaDetails()
-
 
 }
 
@@ -37,25 +35,18 @@ class MediaList{
 +removeFromWatchLater()
 +searchByCategory()
 +searchByName()
-+displayWatchAgain()
-+displayWatchLater()
 }
 
 class UserList{
+-List<Media> watchLater
+-List<Media> watchAgain
+-List<User> users
 -String username
 -String password
--boolean adult
 +setUsername()
 +setPassword()
-+setAge()
-+setName()
-+getName()
-+getAge()
 +getUsername()
 +getPassword()
--ArrayList<String> watchLater
--ArrayList<String> watchAgain
--List<User> users
 }
 
 
@@ -72,10 +63,12 @@ class Series{
 class UserClient{
 -TextUI ui
 -FileIO io
-+createUser()
-+login()
-
-'+logout()
+'+createUser()
+'+login() Disse to bør ske i setup
++void addToWatchAgain()
++void addToWatchLater()
++displayWatchAgain()
++displayWatchLater()
 }
 
 
@@ -89,8 +82,6 @@ class TextUI{
 +boolean promptBinary(String msg)
 }
 class FileIO{
-'+void addMediaToFile(Media media, String path)
-'+void removeMediaFromFile(Media media, String path)
 +List<User> readUserData(enumPathing ePath)
 +void saveUserData(List<User> users, enumPathing ePath, String Header)
 +List<Media> readMediaData(enumPathing ePath)
