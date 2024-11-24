@@ -30,6 +30,6 @@ public class Series extends Media {
 
     @Override
     public String toString() {
-        return super.toString() + ", Seasons: " + seasons + ", Episodes: " + episodes;
+        return super.toString() + "; " + seasons + "; " + episodes;
     }
 }

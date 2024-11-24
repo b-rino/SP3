@@ -46,7 +46,7 @@ public class Media {
 
     @Override
     public String toString() {
-        return "Title: " + title + ", Year: " + releaseYear + ", Category: " + category + ", Rating: " + rating;
+        return title + "; " + releaseYear + "; " + category +"; " + rating;
     }
 }
 

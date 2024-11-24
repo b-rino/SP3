@@ -6,7 +6,6 @@ import java.util.List;
 
 
 public class User {
-    UserIO UserIO = new UserIO();
     TextUI ui = new TextUI();
     private String name;
     private int age;
@@ -106,6 +105,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "Username: " + username + " Password: " + password;
+        return  username + "; " + password;
     }
 }
