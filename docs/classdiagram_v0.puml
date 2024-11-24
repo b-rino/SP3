@@ -40,7 +40,7 @@ class MediaList{
 class UserList{
 -List<Media> watchLater
 -List<Media> watchAgain
--List<User> users
+-List<UserList> users
 -String username
 -String password
 +setUsername()
@@ -63,8 +63,8 @@ class Series{
 class UserClient{
 -TextUI ui
 -FileIO io
-'+createUser()
-'+login() Disse to bør ske i setup
+'+createUser() en del af login
++login()
 +void addToWatchAgain()
 +void addToWatchLater()
 +displayWatchAgain()

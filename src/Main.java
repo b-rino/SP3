@@ -45,9 +45,9 @@ public class Main {
         //Test af at skrive til userdata --- VIRKER
         /*
         FileIO io = new FileIO();
-        List<User> users = new ArrayList<>();
-        User user = new User("BingoHEJHEJ", "cannotremember");
-        User user2 = new User("BingoBYEBYE", "STILLcannotremember");
+        List<UserList> users = new ArrayList<>();
+        UserList user = new UserList("BingoHEJHEJ", "cannotremember");
+        UserList user2 = new UserList("BingoBYEBYE", "STILLcannotremember");
         users.add(user);
         users.add(user2);
         io.saveUserData(users, enumPathing.USER, "username, password");
@@ -58,8 +58,8 @@ public class Main {
         //Test af at læse fra userdata.txt --- VIRKER
         /*
         FileIO io = new FileIO();
-        List<User> users = io.readUserData(enumPathing.USER);
-        for (User user : users) {
+        List<UserList> users = io.readUserData(enumPathing.USER);
+        for (UserList user : users) {
             System.out.println(user);
         }
         */
