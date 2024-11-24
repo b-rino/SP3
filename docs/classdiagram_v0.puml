@@ -91,10 +91,10 @@ class TextUI{
 class FileIO{
 '+void addMediaToFile(Media media, String path)
 '+void removeMediaFromFile(Media media, String path)
-+ArrayList<User> readUserData(String path)
-+void saveUserData(ArrayList<User> users, String path)
-+ArrayList<Media> readMediaData(String path)
-'+void saveMediaData
++List<User> readUserData(enumPathing ePath)
++void saveUserData(List<User> users, enumPathing ePath, String Header)
++List<Media> readMediaData(enumPathing ePath)
++void saveMediaData(List<Media> medias, enumPathing ePath, String Header)
 }
 }
 
