@@ -7,8 +7,9 @@ public class Main {
 
         FileIO fileIO = new FileIO();
         List<Media> test = fileIO.readMediaData(enumPathing.SERIES);
-        for (Media media : test) {
-            System.out.println(media);
+        List<User> userTest = fileIO.readUserData(enumPathing.USER);
+        for (User users : userTest) {
+            System.out.println(users);
         }
     }
 }

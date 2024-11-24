@@ -17,7 +17,9 @@ public class User {
     //private HashMap<String, String> userCredentials;
     private String path = "data\\userdata.txt";
 
-    public User(){
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
         this.movieList = new ArrayList<Media>();
         this.seriesList = new ArrayList<Media>();
         //this.userCredentials = new HashMap<>();
@@ -98,7 +100,17 @@ public class User {
         return password;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                '}';
+    }
+
     public String getUsername() {
         return username;
+
+
     }
 }

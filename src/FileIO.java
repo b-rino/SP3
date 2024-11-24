@@ -12,6 +12,8 @@ public class FileIO {
     private String pathMovie = "data\\movie.txt";
     private String pathUser = "data\\userdata.txt";
     private String pathCombi = "data\\allmedia.txt";
+    private String pathWatchAgain = "data\\watchAgain.txt";
+    private String pathWatchLater = "data\\watchLater.txt";
 
     //TODO Switch-case bør laves i denne metode
     public List<Media> readMediaData(enumPathing ePath) {
@@ -22,6 +24,10 @@ public class FileIO {
             path = this.pathSeries;
         if (ePath == enumPathing.COMBI)
             path = this.pathCombi;
+        if (ePath == enumPathing.WATCHAGAIN)
+            path = this.pathWatchAgain;
+        if (ePath == enumPathing.WATCHLATER)
+            path = this.pathWatchLater;
         List<Media> mediaList = new ArrayList<>();
         File file = new File(path);
         try {
@@ -76,11 +82,11 @@ public class FileIO {
             System.out.println("something went wrong when writing to file");
         }
     }
-    public List<String[]> readUserData(enumPathing ePath) {
+    public List<User> readUserData(enumPathing ePath) {
         String path = null;
-        if(ePath == enumPathing.USER )
+        if(ePath == enumPathing.USER)
             path = this.pathUser;
-        List<String[]> data = new ArrayList<>();
+        List<User> userData = new ArrayList<>();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
@@ -89,11 +95,14 @@ public class FileIO {
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();// "tess, 40000". Needs to split on ";" instead of comma
                 String[] splitData = line.split(";");
-                data.add(splitData);
+                String username = splitData[0].trim();
+                String password = splitData[1].trim();
+                User user = new User(username, password);
+                userData.add(user);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
         }
-        return data;
+        return userData;
     }
 }
