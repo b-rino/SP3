@@ -33,20 +33,20 @@ public class User {
         ArrayList<String> savedData = new ArrayList<>();
         savedData.add(this.username);
         savedData.add(this.password);
-        io.saveData(savedData, this.path, "username, password");
+        io.saveData(savedData,this.path,"Username,Password");
         //todo: Få SaveData til at virke - jeg har spurgt chat og den siger det burde virke
         // jeg har kørt debud på den også og der skulle ikke være nogen fejl?
     }
 
     public void login() {
-        //String loginUsername = JOptionPane.showInputDialog(" Please enter username: ");
-        String loginUsername = ui.promptText("Please enter your username");
+        String loginUsername = JOptionPane.showInputDialog(" Please enter username: ");
+        JOptionPane.showMessageDialog(null, "Welcome " + loginUsername);
+        //String loginUsername = ui.promptText("Please enter your username");
         if (!this.path.contains(loginUsername)) {
             //String loginPassword = ui.promptText("Please enter your password");
             String loginPassWord = JOptionPane.showInputDialog(" Please enter your password: ");
+            JOptionPane.showMessageDialog(null, "You have successfully logged in");
         }
-        String loginPassword = ui.promptText("Please enter your password");
-        //if();
     }
 
     public void setAge(int age) {
@@ -96,9 +96,6 @@ public class User {
         JOptionPane.showMessageDialog(null, "Your password is Valid");
         if(password == null || password.equals("")){
           throw new IllegalArgumentException("Password cannot be empty");
-        }
-        else {
-            this.password = password;
         }
 
     }

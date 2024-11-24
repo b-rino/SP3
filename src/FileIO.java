@@ -74,7 +74,6 @@ public class FileIO {
             writer.close();
         } catch (IOException e) {
             System.out.println("something went wrong when writing to file" + e.getMessage());
-            e.printStackTrace();
         }
     }
     public List<String[]> readUserData(enumPathing ePath) {
