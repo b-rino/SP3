@@ -21,6 +21,7 @@ public class UserClient {
                 System.out.println("You have successfully logged in!");
             else
                 System.out.println("You have entered a invalid username or password!");
+            login();
         }
         // Creating new user
         else if (answerAlreadyUser.equalsIgnoreCase("N")) {
