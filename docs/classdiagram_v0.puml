@@ -25,11 +25,11 @@ class MediaClient{
 -FileIO io
 +Mediaclient(String name)
 +void closeClient()
-+void mediaMenu()
++void displayMenu()
 +(ArrayList<String> mediaList)
 
 }
-class MediaList{
+class MediaAction{
 -List<Media> mediaList
 +playMedia()
 +saveToWatchLater()
@@ -90,12 +90,12 @@ class FileIO{
 }
 }
 
-MediaList *-- Media
+MediaAction *-- Media
 Media<|--Series
 Media <|-- Movie
 Client *-- MediaClient
 MediaClient *-- "util"
-MediaClient -- MediaList
+MediaClient -- MediaAction
 Client *-- UserClient
 UserClient -- User
 UserClient *--"util"
