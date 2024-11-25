@@ -7,6 +7,7 @@ class Main{
 
 class Client{
 -UserClient userClient
+-MediaClient mediaClient
 +void setup()
 }
 
