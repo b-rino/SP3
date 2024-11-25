@@ -16,9 +16,9 @@ public class FileIO {
     private String pathCombi = "data\\allmedia.txt";
 
 
-    public List<UserList> readUserData(enumPathing ePath) {
+    public List<User> readUserData(enumPathing ePath) {
         String path = this.pathUser;
-        List<UserList> userData = new ArrayList<>();
+        List<User> userData = new ArrayList<>();
         File file = new File(path);
         try {
             Scanner scan = new Scanner(file);
@@ -29,7 +29,7 @@ public class FileIO {
                 String[] splitData = line.split(";");
                 String username = splitData[0];
                 String password = splitData[1];
-                UserList user = new UserList(username, password);
+                User user = new User(username, password);
                 userData.add(user);
             }
         } catch (FileNotFoundException e) {
@@ -39,14 +39,14 @@ public class FileIO {
     }
 
 
-    public void saveUserData(List<UserList> userData, enumPathing ePath, String header) {
+    public void saveUserData(List<User> userData, enumPathing ePath, String header) {
         String path = this.pathUser;
         try {
             FileWriter writer = new FileWriter(path, true);
             if(new File(path).length() == 0) {
                 writer.write(header + "\n");
             }
-            for (UserList user : userData) {
+            for (User user : userData) {
                 writer.write(user.toString() + "\n");
             }
 

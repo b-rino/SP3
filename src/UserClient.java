@@ -2,13 +2,13 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserClient {
+/*public class UserClient {
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
 
-    public void createUser() {
+    /*public void createUser() {
 
-      /*  userlist.setUsername();
+        userlist.setUsername();
         userlist.setPassword();
         //userCredentials.put(this.username, this.password); flex only
         ui.displayMsg("You have successfully created a user and are now logged in");
@@ -20,8 +20,8 @@ public class UserClient {
 
 
        */
-    public void login(){
-        List<UserList> users = io.readUserData(enumPathing.USER);
+   /* public void login(){
+        List<User> users = io.readUserData(enumPathing.USER);
 
         String answerAlreadyUser = ui.promptText("Do you already have a user? Y / N ?");
 
@@ -39,13 +39,14 @@ public class UserClient {
             if(createUser.equalsIgnoreCase("Y")) {
                 String username = ui.promptText("Enter your username: ");
                 String password = ui.promptText("Enter your password: ");
-                List <UserList> saveNewUser = new ArrayList <>();
-                UserList newUser = new UserList(username, password);
+                List <User> saveNewUser = new ArrayList <>();
+                UserList newUser = new User(username, password);
+                saveNewUser.add(newUser);
                 io.saveUserData(saveNewUser, enumPathing.USER, "username, password");
             }
         }
         }
 
-
     }
 }
+*/

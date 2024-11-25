@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserList {
+public class User {
     private String password;
     private String username;
-    private List<Media> movieList = new ArrayList<>();
-    private List<Media> seriesList = new ArrayList<>();
+    private List<Media> watchAgain = new ArrayList<>();
+    private List<Media> watchLater = new ArrayList<>();
     private String path = "data\\userdata.txt";
 
-    public UserList(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }

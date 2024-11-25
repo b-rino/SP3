@@ -6,6 +6,7 @@ class Main{
 }
 
 class Client{
+-UserClient userClient
 +void setup()
 }
 
@@ -37,7 +38,7 @@ class MediaList{
 +searchByName()
 }
 
-class UserList{
+class User{
 -List<Media> watchLater
 -List<Media> watchAgain
 -List<UserList> users
@@ -96,7 +97,7 @@ Client *-- MediaClient
 MediaClient *-- "util"
 MediaClient -- MediaList
 Client *-- UserClient
-UserClient -- UserList
+UserClient -- User
 UserClient *--"util"
 Main *-- Client
 Client *-- "util"

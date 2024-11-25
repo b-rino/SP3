@@ -5,9 +5,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-       /*
+        /*UserClient client = new UserClient();
+        client.login();*/
+
+
        //Test af at skrive til alle Media txt --- VIRKER
-        FileIO io = new FileIO();
+       /* FileIO io = new FileIO();
         List<Media> movieList = new ArrayList<>();
         List<Media> seriesList = new ArrayList<>();
         List<Media> combiList = new ArrayList<>();
@@ -24,16 +27,17 @@ public class Main {
         io.saveMediaData(seriesList, enumPathing.SERIES, "Title, Year, Category, Rating, Seasons, Episodes");
         io.saveMediaData(combiList, enumPathing.COMBI, "Title, Year, Category, Rating, Seasons, Episodes");
         io.saveMediaData(watchedList, enumPathing.WATCHAGAIN, "Title, Year, Category, Rating, Seasons, Episodes");
-
         */
 
 
 
 
-        /*
+
+
         //Test af at læse fra de forskellige Media txt --- VIRKER
+        /*
         FileIO io = new FileIO();
-        List<Media> newMedia = io.readMediaData(enumPathing.MOVIE);
+        List<Media> newMedia = io.readMediaData(enumPathing.WATCHAGAIN);
         for (Media media : newMedia) {
             System.out.println(media);
         }
@@ -45,24 +49,23 @@ public class Main {
         //Test af at skrive til userdata --- VIRKER
         /*
         FileIO io = new FileIO();
-        List<UserList> users = new ArrayList<>();
-        UserList user = new UserList("BingoHEJHEJ", "cannotremember");
-        UserList user2 = new UserList("BingoBYEBYE", "STILLcannotremember");
+        List<User> users = new ArrayList<>();
+        User user = new User("BingoHEJHEJ", "cannotremember");
+        User user2 = new User("BingoBYEBYE", "STILLcannotremember");
         users.add(user);
         users.add(user2);
         io.saveUserData(users, enumPathing.USER, "username, password");
-        */
 
+        */
 
 
         //Test af at læse fra userdata.txt --- VIRKER
         /*
         FileIO io = new FileIO();
-        List<UserList> users = io.readUserData(enumPathing.USER);
-        for (UserList user : users) {
+        List<User> users = io.readUserData(enumPathing.USER);
+        for (User user : users) {
             System.out.println(user);
         }
         */
-
     }
 }
