@@ -8,8 +8,11 @@ public class MediaClient {
     String userDataPath;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
-    MediaAction mediaAction;
 
+    public List<Media> loadAllMediaData(){
+        List<Media> loadedData = io.readMediaData(enumPathing.COMBI);
+        return loadedData;
+    }
 
     public void displayMenu() {
         ArrayList<String> options = new ArrayList<>();
@@ -30,9 +33,9 @@ public class MediaClient {
             case 2:
                 int choice = ui.promptNumeric("1. Search by title\n2. Search by category ");
                 if (choice == 1)
-                    mediaAction.searchByTitle();
+                    searchByTitle();
                 else if (choice == 2)
-                    mediaAction.searchByCategory();
+                    searchByCategory();
                 else {
                     System.out.println("Invalid choice");
                     displayMenu();
@@ -42,8 +45,18 @@ public class MediaClient {
                 // mediaAction.displayWatchAgain();
                 break;
             case 4:
-                mediaAction.displayWatchLater();
+                displayWatchLater();
                 break;
         }
+    }
+    public void searchByTitle() {
+
+    }
+    public void searchByCategory() {
+
+    }
+
+    public void displayWatchLater() {
+
     }
 }

@@ -21,29 +21,27 @@ class Media{
 }
 
 class MediaClient{
--String name
 -TextUI ui
 -FileIO io
-+Mediaclient(String name)
+-List<Media> mediaList
 +void closeClient()
 +void displayMenu()
-+(ArrayList<String> mediaList)
-
-}
-class MediaAction{
--List<Media> mediaList
++List<Media> loadAllMediaData()
 +playMedia()
 +saveToWatchLater()
 +removeFromWatchLater()
 +searchByCategory()
 +searchByTitle()
+
 }
+
 
 class User{
 -List<Media> watchLater
 -List<Media> watchAgain
 -String username
 -String password
++User(String username, String password)
 +setUsername()
 +setPassword()
 +getUsername()
@@ -90,12 +88,12 @@ class FileIO{
 }
 }
 
-MediaAction *-- Media
+
 Media<|--Series
 Media <|-- Movie
 Client *-- MediaClient
 MediaClient *-- "util"
-MediaClient -- MediaAction
+MediaClient -- Media
 Client *-- UserClient
 UserClient -- User
 UserClient *--"util"

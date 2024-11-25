@@ -13,6 +13,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        //TODO opret ny fil hver gang der bliver oprettet en ny User
     }
 
 
