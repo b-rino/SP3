@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    private String pathUser = "data\\userdata.txt";
-    private String pathWatchAgain = "data\\watchAgain.txt";
-    private String pathWatchLater = "data\\watchLater.txt";
-    private String pathSeries = "data\\series.txt";
-    private String pathMovie = "data\\movie.txt";
-    private String pathCombi = "data\\allmedia.txt";
+    private String pathUser = "data//userdata.txt";
+    private String pathWatchAgain = "data//watchAgain.txt";
+    private String pathWatchLater = "data//watchLater.txt";
+    private String pathSeries = "data//series.txt";
+    private String pathMovie = "data//movie.txt";
+    private String pathCombi = "data//allmedia.txt";
 
 
     public List<User> readUserData(enumPathing ePath) {
