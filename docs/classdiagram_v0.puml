@@ -7,7 +7,7 @@ class Main{
 
 class Client{
 -UserClient userClient
--MediaClient mediaClient
+- Media mediaClient
 +void setup()
 }
 
@@ -36,13 +36,12 @@ class MediaAction{
 +saveToWatchLater()
 +removeFromWatchLater()
 +searchByCategory()
-+searchByName()
++searchByTitle()
 }
 
 class User{
 -List<Media> watchLater
 -List<Media> watchAgain
--List<UserList> users
 -String username
 -String password
 +setUsername()
@@ -65,7 +64,7 @@ class Series{
 class UserClient{
 -TextUI ui
 -FileIO io
-'+createUser() en del af login
+-List<UserList> users
 +login()
 +void addToWatchAgain()
 +void addToWatchLater()

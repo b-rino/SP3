@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class MediaClient {
@@ -5,16 +6,44 @@ public class MediaClient {
     List<User> users;
     User currentUser;
     String userDataPath;
-    TextUI ui;
-    FileIO io;
+    TextUI ui = new TextUI();
+    FileIO io = new FileIO();
+    MediaAction mediaAction;
 
-    public MediaClient(String name, List<User> users, User currentUser, String userDataPath, TextUI ui, FileIO io) {
-        this.name = name;
-        this.users = users;
-        this.currentUser = currentUser;
-        this.userDataPath = userDataPath;
-        this.ui = ui;
-        this.io = io;
+
+    public void displayMenu() {
+        ArrayList<String> options = new ArrayList<>();
+        options.add("1. Search for a movie: ");
+        options.add("2. Search for a series: ");
+        options.add("3. Display your watched list: ");
+        options.add("4. Display your saved list: ");
+        options.add("5. Exit");
+
+        for (int i = 0; i < options.size(); i++) {
+            System.out.println(options.get(i));
+        }
+
+        int answer = ui.promptNumeric("Please choose a number ");
+
+        switch (answer) {
+            case 1:
+            case 2:
+                int choice = ui.promptNumeric("1. Search by title\n2. Search by category ");
+                if (choice == 1)
+                    mediaAction.searchByTitle();
+                else if (choice == 2)
+                    mediaAction.searchByCategory();
+                else {
+                    System.out.println("Invalid choice");
+                    displayMenu();
+                }
+                break;
+            case 3:
+                // mediaAction.displayWatchAgain();
+                break;
+            case 4:
+                mediaAction.displayWatchLater();
+                break;
+        }
     }
-
 }
