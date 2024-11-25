@@ -1,4 +1,2 @@
-
 username, password
-BingoHEJHEJ; cannotremember
-BingoBYEBYE; STILLcannotremember
+Benjamin; Benjamin

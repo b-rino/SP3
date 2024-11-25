@@ -5,8 +5,11 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        /*UserClient client = new UserClient();
-        client.login();*/
+
+        UserClient client = new UserClient();
+        client.login();
+
+
 
 
        //Test af at skrive til alle Media txt --- VIRKER
@@ -55,8 +58,8 @@ public class Main {
         users.add(user);
         users.add(user2);
         io.saveUserData(users, enumPathing.USER, "username, password");
-
         */
+
 
 
         //Test af at læse fra userdata.txt --- VIRKER

@@ -27,8 +27,8 @@ public class FileIO {
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] splitData = line.split(";");
-                String username = splitData[0];
-                String password = splitData[1];
+                String username = splitData[0].trim();
+                String password = splitData[1].trim();
                 User user = new User(username, password);
                 userData.add(user);
             }
