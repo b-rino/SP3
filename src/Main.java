@@ -8,6 +8,9 @@ public class Main {
 
         UserClient client = new UserClient();
         client.login();
+        MediaClient mediaclient = new MediaClient();
+        mediaclient.displayMenu();
+
 
         //Master update
 
