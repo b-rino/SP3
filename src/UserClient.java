@@ -2,25 +2,12 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/*public class UserClient {
+public class UserClient {
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
 
-    /*public void createUser() {
 
-        userlist.setUsername();
-        userlist.setPassword();
-        //userCredentials.put(this.username, this.password); flex only
-        ui.displayMsg("You have successfully created a user and are now logged in");
-        List<User> saveUserData = new ArrayList<>();
-        saveUserData.add(this.username);
-        saveUserData.add(this.password);
-        io.saveData(savedData, enumPathing.USER, "username, password");
-    }
-
-
-       */
-   /* public void login(){
+    public void login(){
         List<User> users = io.readUserData(enumPathing.USER);
 
         String answerAlreadyUser = ui.promptText("Do you already have a user? Y / N ?");
@@ -49,4 +36,3 @@ import java.util.List;
 
     }
 }
-*/
