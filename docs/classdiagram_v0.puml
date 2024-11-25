@@ -6,6 +6,7 @@ class Main{
 }
 
 class Client{
+-UserClient userClient
 +void setup()
 }
 
@@ -15,8 +16,6 @@ class Media{
 - String category
 - float rating
 +Media(String title, int year, String category, float rating)
-+getMediaDetails()
-
 
 }
 
@@ -26,36 +25,29 @@ class MediaClient{
 -FileIO io
 +Mediaclient(String name)
 +void closeClient()
-+void mediaMenu()
++void displayMenu()
 +(ArrayList<String> mediaList)
 
 }
-class MediaList{
+class MediaAction{
 -List<Media> mediaList
 +playMedia()
 +saveToWatchLater()
 +removeFromWatchLater()
 +searchByCategory()
 +searchByName()
-+displayWatchAgain()
-+displayWatchLater()
 }
 
-class UserList{
+class User{
+-List<Media> watchLater
+-List<Media> watchAgain
+-List<UserList> users
 -String username
 -String password
--boolean adult
 +setUsername()
 +setPassword()
-+setAge()
-+setName()
-+getName()
-+getAge()
 +getUsername()
 +getPassword()
--ArrayList<String> watchLater
--ArrayList<String> watchAgain
--List<User> users
 }
 
 
@@ -72,10 +64,12 @@ class Series{
 class UserClient{
 -TextUI ui
 -FileIO io
-+createUser()
+'+createUser() en del af login
 +login()
-
-'+logout()
++void addToWatchAgain()
++void addToWatchLater()
++displayWatchAgain()
++displayWatchLater()
 }
 
 
@@ -89,23 +83,21 @@ class TextUI{
 +boolean promptBinary(String msg)
 }
 class FileIO{
-'+void addMediaToFile(Media media, String path)
-'+void removeMediaFromFile(Media media, String path)
-+ArrayList<User> readUserData(String path)
-+void saveUserData(ArrayList<User> users, String path)
-+ArrayList<Media> readMediaData(String path)
-'+void saveMediaData
++List<User> readUserData(enumPathing ePath)
++void saveUserData(List<User> users, enumPathing ePath, String Header)
++List<Media> readMediaData(enumPathing ePath)
++void saveMediaData(List<Media> medias, enumPathing ePath, String Header)
 }
 }
 
-MediaList *-- Media
+MediaAction *-- Media
 Media<|--Series
 Media <|-- Movie
 Client *-- MediaClient
 MediaClient *-- "util"
-MediaClient -- MediaList
+MediaClient -- MediaAction
 Client *-- UserClient
-UserClient -- UserList
+UserClient -- User
 UserClient *--"util"
 Main *-- Client
 Client *-- "util"

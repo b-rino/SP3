@@ -14,39 +14,10 @@ public class Media {
         this.rating = rating;
     }
 
-    public String getMediaDetails(Media media) {
-        return this.title + this.releaseYear + this.category + this.rating;
-    }
-
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getReleaseYear() {
-        return releaseYear;
-    }
-
-    public String getCategory() {
-        return category;
-    }
 
     @Override
     public String toString() {
-        return "Title: " + title + ", Year: " + releaseYear + ", Category: " + category + ", Rating: " + rating;
+        return title + "; " + releaseYear + "; " + category +"; " + rating;
     }
 }
 
