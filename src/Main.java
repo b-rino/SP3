@@ -6,10 +6,12 @@ public class Main {
     public static void main(String[] args) {
 
 
-        UserClient client = new UserClient();
+        /*UserClient client = new UserClient();
         client.login();
         MediaClient mediaclient = new MediaClient();
-        mediaclient.displayMenu();
+        mediaclient.displayMenu();*/
+        MediaAction ma = new MediaAction();
+        ma.searchByCategory();
 
 
         //Master update
