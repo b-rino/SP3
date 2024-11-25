@@ -19,7 +19,7 @@ public class UserClient {
                     if(users.contains(user)) {
                         System.out.println("You have successfully logged in!");
                     }
-                    else System.out.println("You have entered a unvalid username or password!");
+                    else System.out.println("You have entered a invalid username or password!");
                 }
             }
        /* else if(answerAlreadyUser.equalsIgnoreCase("N")) {

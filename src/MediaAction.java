@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MediaList {
+public class MediaAction {
 
     private List<Media> mediaList;
 
-    public MediaList() {
+    public MediaAction() {
         this.mediaList = new ArrayList<>();
     }
 
