@@ -8,9 +8,9 @@ public class MediaClient {
     private String userDataPath;
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
-    private List<Media> allMedia = io.readMediaData(enumPathing.COMBI);
-    private List<Media> movie = io.readMediaData(enumPathing.MOVIE);
-    private List<Media> series  = io.readMediaData(enumPathing.SERIES);
+    private List<Media> allMedia = io.readMediaData("combi");
+    private List<Media> movie = io.readMediaData("movie");
+    private List<Media> series  = io.readMediaData("series");
     private User currentUser;
 
     public MediaClient(User currentUser) {
@@ -44,7 +44,7 @@ public class MediaClient {
                 }
                 break;
             case 2:
-                // mediaAction.displayWatchAgain();
+                displayWatchAgain();
                 break;
             case 3:
                 displayWatchLater();
@@ -96,6 +96,12 @@ public class MediaClient {
 
 
     public void displayWatchLater() {
-        List<Media> watchLaterList = io.readMediaData(enumPathing.COMBI);
+        List<Media> watchLaterList = io.readMediaData("combi");
     }
+
+    public void displayWatchAgain(){
+        List<Media> watchAgainList = io.readMediaData("");
+        System.out.println(watchAgainList);
+    }
+
 }

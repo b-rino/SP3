@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileIO {
-
+    private String username;
     private String pathUser = "data//userdata.txt";
-    private String pathWatchAgain = "data//watchAgain.txt";
-    private String pathWatchLater = "data//watchLater.txt";
+    private String pathWatchAgain;
+    private String pathWatchLater;
     private String pathSeries = "data//series.txt";
     private String pathMovie = "data//movie.txt";
     private String pathCombi = "data//allmedia.txt";
@@ -57,27 +57,27 @@ public class FileIO {
     }
 
 
-    public List<Media> readMediaData(enumPathing ePath) {
-        String path = null;
-        switch (ePath) {
-            case MOVIE:
-                path = this.pathMovie;
+    public List<Media> readMediaData(String path) {
+        String actualPath = null;
+        switch (path) {
+            case "movie":
+                actualPath = this.pathMovie;
                 break;
-            case SERIES:
-                path = this.pathSeries;
+            case "series":
+                actualPath = this.pathSeries;
                 break;
-            case COMBI:
-                path = this.pathCombi;
+            case "combi":
+                actualPath = this.pathCombi;
                 break;
-            case WATCHAGAIN:
-                path = this.pathWatchAgain;
+            case "watchAgain":
+                actualPath = this.pathWatchAgain;
                 break;
-            case WATCHLATER:
-                path = this.pathWatchLater;
+            case "watchLater":
+                actualPath = this.pathWatchLater;
                 break;
         }
         List<Media> mediaList = new ArrayList<>();
-        File file = new File(path);
+        File file = new File(actualPath);
         try {
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
@@ -86,7 +86,7 @@ public class FileIO {
                 String line = scan.nextLine();
                 String[] splitData = line.split(";");
 
-                if(splitData.length == 4 && (ePath == enumPathing.MOVIE || ePath == enumPathing.COMBI || ePath == enumPathing.WATCHAGAIN || ePath == enumPathing.WATCHLATER)) {
+                if(splitData.length == 4 && (path.equals("movie") || path.equals("combi")|| path.equals("watchAgain") || path.equals("watchLater"))) {
                     String title = splitData[0].trim();
                     int year = Integer.parseInt(splitData[1].trim());
                     String category = splitData[2].trim();
@@ -95,7 +95,7 @@ public class FileIO {
                     Movie movie = new Movie(title, year, category, rating);
                     mediaList.add(movie);
                 }
-                if(splitData.length  == 6 && (ePath == enumPathing.SERIES || ePath == enumPathing.COMBI|| ePath == enumPathing.WATCHAGAIN || ePath == enumPathing.WATCHLATER)){
+                if(splitData.length  == 6 && (path.equals("series") || path.equals("combi")|| path.equals("watchAgain") || path.equals("watchLater"))){
                     String title = splitData[0].trim();
                     int year = Integer.parseInt(splitData[1].trim());
                     String category = splitData[2].trim();

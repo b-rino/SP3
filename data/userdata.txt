@@ -8,3 +8,5 @@ henning; henning
 pingu; pingu
 pil; pil
 BigHankDeluxe; Big
+benjamin2; benjamin2
+pedrovic; pedrovic

@@ -96,4 +96,8 @@ public class User {
     @Override public int hashCode() {
         return Objects.hash(username, password);
     }
+
+    public List<Media> getWatchAgain() {
+        return watchAgain;
+    }
 }

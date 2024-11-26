@@ -8,8 +8,9 @@ public class Main {
 
         UserClient userClient = new UserClient();
         User currentUser = userClient.login();
-        MediaClient mediaclient = new MediaClient(currentUser);
-        mediaclient.displayMenu();
+        //MediaClient mediaclient = new MediaClient(currentUser);
+        //mediaclient.displayMenu();
+
 
 
 
