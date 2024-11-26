@@ -1,0 +1,3 @@
+title, year, category, rating, seasons, episodes
+Fear The Walking Dead; 2015; Drama, Horror, Sci-fi; 7.0; 4; 53
+The Strain; 2014; Drama, Horror, Thriller; 7.4; 4; 46

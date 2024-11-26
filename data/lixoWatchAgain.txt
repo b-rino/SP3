@@ -1,0 +1,5 @@
+title, year, category, rating, seasons, episodes
+Seinfeld; 1989; Comedy; 8.9; 9; 180
+Shameless; 2011; Comedy, Drama; 8.7; 9; 103
+Titanic; 1997; Drama, Romance; 7.8
+Night Court; 1984; Comedy; 7.7; 9; 193
