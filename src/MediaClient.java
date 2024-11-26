@@ -8,11 +8,8 @@ public class MediaClient {
     String userDataPath;
     TextUI ui = new TextUI();
     FileIO io = new FileIO();
-
-    public List<Media> loadAllMediaData(){
-        List<Media> loadedData = io.readMediaData(enumPathing.COMBI);
-        return loadedData;
-    }
+    List<Media> allMedia = io.readMediaData(enumPathing.COMBI);
+    User user;
 
     public void displayMenu() {
         ArrayList<String> options = new ArrayList<>();
@@ -49,8 +46,24 @@ public class MediaClient {
                 break;
         }
     }
-    public void searchByTitle() {
 
+
+    public void searchByTitle() {
+        String answer = ui.promptText("Please enter a title: ");
+        for (Media media : allMedia) {
+            if (media.getTitle().equalsIgnoreCase(answer)) {
+                String selection = ui.promptText("Do you want to watch? " + media.getTitle() + " Y / N");
+                // TODO: Should this be made in playMedia method indstead?
+                if (selection.equalsIgnoreCase("Y"))
+                    System.out.println("You're now watching " + media.getTitle());
+
+                // TODO: If Y add to watchAgain
+                else if (selection.equalsIgnoreCase("N"))
+                    // TODO: Prompt user for another search or back to menu
+                    // System.out.println("Do you want to search for a different title or return to menu? ");
+                    searchByTitle();
+            }
+        }
     }
     public void searchByCategory() {
 
