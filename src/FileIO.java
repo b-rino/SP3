@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileIO {
-
     private String pathUser = "data//userdata.txt";
-    private String pathWatchAgain = "data//watchAgain.txt";
-    private String pathWatchLater = "data//watchLater.txt";
+    private String pathWatchAgain;
+    private String pathWatchLater;
     private String pathSeries = "data//series.txt";
     private String pathMovie = "data//movie.txt";
     private String pathCombi = "data//allmedia.txt";
@@ -58,6 +57,8 @@ public class FileIO {
 
 
     public List<Media> readMediaData(enumPathing ePath) {
+        UserClient userClient = new UserClient();
+        String usernamePath = userClient.currentUser.getUsername();
         String path = null;
         switch (ePath) {
             case MOVIE:
@@ -70,10 +71,10 @@ public class FileIO {
                 path = this.pathCombi;
                 break;
             case WATCHAGAIN:
-                path = this.pathWatchAgain;
+                path = "data//" + usernamePath + "WatchAgain.txt";
                 break;
             case WATCHLATER:
-                path = this.pathWatchLater;
+                path = "data//" + usernamePath + "WatchLater.txt";
                 break;
         }
         List<Media> mediaList = new ArrayList<>();

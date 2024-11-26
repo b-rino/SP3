@@ -98,4 +98,12 @@ public class MediaClient {
     public void displayWatchLater() {
         List<Media> watchLaterList = io.readMediaData(enumPathing.COMBI);
     }
+
+    public void displayWatchAgain() {
+        List<Media> watchAgainList = io.readMediaData();
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 }
