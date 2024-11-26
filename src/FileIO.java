@@ -114,25 +114,7 @@ public class FileIO {
     }
 
 
-    public void saveMediaData(List<Media> items, enumPathing ePath, String header) {
-        String path = null;
-        switch (ePath) {
-            case MOVIE:
-                path = this.pathMovie;
-                break;
-            case SERIES:
-                path = this.pathSeries;
-                break;
-            case COMBI:
-                path = this.pathCombi;
-                break;
-            case WATCHAGAIN:
-                path = this.pathWatchAgain;
-                break;
-            case WATCHLATER:
-                path = this.pathWatchLater;
-                break;
-        }
+    public void saveMediaData(List<Media> items, String path, String header) {
         try {
             FileWriter writer = new FileWriter(path, true);
             if(new File(path).length() == 0) {

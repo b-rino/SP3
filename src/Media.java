@@ -18,6 +18,10 @@ public class Media {
         return title;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     @Override
     public String toString() {
         return title + "; " + releaseYear + "; " + category +"; " + rating;

@@ -1,1 +1,10 @@
-username, passwordmikkel; mikkel
+
+peter; peter
+kill; kill
+pedro; pedro
+hans; hans
+grete; grete
+henning; henning
+pingu; pingu
+pil; pil
+BigHankDeluxe; Big

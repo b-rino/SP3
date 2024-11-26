@@ -12,33 +12,38 @@ public class User {
     private List<Media> watchAgain = new ArrayList<>();
     private List<Media> watchLater = new ArrayList<>();
     private String path = "data//userdata.txt";
-    private String userMediaPath;
-    File file;
+    private String pathWatchAgain;
+    private String pathWatchLater;
+    File fileWatchAgain;
+    File fileWatchLater;
 
     public User(String username, String password) {
         // TODO: Set username, set password.
         this.username = username;
         this.password = password;
         //TODO opret ny fil hver gang der bliver oprettet en ny User
-        this.userMediaPath = "data//" + username + "MediaData.txt";
-        this.file = new File(userMediaPath);
+        this.pathWatchAgain = "data//" + username + "WatchAgain.txt";
+        this.pathWatchLater = "data//" + username + "WatchLater.txt";
+        this.fileWatchAgain = new File(pathWatchAgain);
+        this.fileWatchLater = new File(pathWatchLater);
 
         try {
             // Tries to create a file. Checks if it already exists
-            if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
-            } else {
-                System.out.println("File already exists: " + file.getName());
-            }
+           fileWatchAgain.createNewFile();
+           fileWatchLater.createNewFile();
+
         } catch (IOException e) {
-            System.out.println("An error occurred while creating the file.");
+            System.out.println("An error occurred while creating the files!");
             e.printStackTrace();
         }
     }
 
-    public List<Media> addToWatchAgain (Media media) {
-        watchAgain.add(media);
-        return watchAgain;
+    public void addToWatchAgain (Media media) {
+        // TODO: Potentially move to userClient so that we dont use fileIO here."
+        List<Media> saved = watchAgain;
+        saved.add(media);
+        FileIO fileio = new FileIO();
+        fileio.saveMediaData(saved, this.pathWatchAgain, "title, year, category, rating, seasons, episodes");
     }
 
 
