@@ -5,7 +5,7 @@ import java.util.List;
 public class UserClient {
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
-    protected User currentUser = null;
+    private String currentUsername;
 
 
     public User login() {
@@ -20,7 +20,7 @@ public class UserClient {
 
             if (users.contains(user)) {
                 System.out.println("You have successfully logged in!");
-                currentUser = user;
+                currentUsername = username;
                 return user;
             } else {
                 System.out.println("You have entered a invalid username or password!");
@@ -38,15 +38,15 @@ public class UserClient {
             User newUser = new User(username, password);
             saveNewUser.add(newUser);
             io.saveUserData(saveNewUser, enumPathing.USER, "username, password");
-            System.out.println("You have successfully created an account! ");
-            currentUser = newUser;
+            System.out.println("You have successfully created an account!");
+            currentUsername = username;
             return newUser;
         }
         return null;
     }
 
-    public void displayCurrentUser() {
-        System.out.println("Current user: " + currentUser.getUsername());
+    public String getCurrentUsername() {
+        return currentUsername;
     }
 }
 

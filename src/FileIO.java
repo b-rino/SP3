@@ -15,6 +15,7 @@ public class FileIO {
     private String pathCombi = "data//allmedia.txt";
 
 
+    //TODO: Hvorfor give en path, når den altid er den samme?
     public List<User> readUserData(enumPathing ePath) {
         String path = this.pathUser;
         List<User> userData = new ArrayList<>();
@@ -37,7 +38,7 @@ public class FileIO {
         return userData;
     }
 
-
+    //TODO: Hvorfor give en path, når den altid er den samme?
     public void saveUserData(List<User> userData, enumPathing ePath, String header) {
         String path = this.pathUser;
         try {
@@ -56,29 +57,32 @@ public class FileIO {
     }
 
 
-    public List<Media> readMediaData(enumPathing ePath) {
-        UserClient userClient = new UserClient();
-        String usernamePath = userClient.currentUser.getUsername();
-        String path = null;
-        switch (ePath) {
-            case MOVIE:
-                path = this.pathMovie;
+    public List<Media> readMediaData(String path, User user) {
+        String usernamePath = user.getUsername();
+        String actualPath = null;
+        switch (path) {
+            case "movie":
+                actualPath = this.pathMovie;
                 break;
-            case SERIES:
-                path = this.pathSeries;
+            case "series":
+                actualPath = this.pathSeries;
                 break;
-            case COMBI:
-                path = this.pathCombi;
+            case "combi":
+                actualPath = this.pathCombi;
                 break;
-            case WATCHAGAIN:
-                path = "data//" + usernamePath + "WatchAgain.txt";
+            case "watchAgain":
+                actualPath = "data//" + usernamePath + "WatchAgain.txt";
                 break;
-            case WATCHLATER:
-                path = "data//" + usernamePath + "WatchLater.txt";
+            case "watchLater":
+                actualPath = "data//" + usernamePath + "WatchLater.txt";
                 break;
         }
         List<Media> mediaList = new ArrayList<>();
-        File file = new File(path);
+        File file = new File(actualPath);
+
+        // Debugging the file path
+        //System.out.println("Reading from file: " + actualPath);
+
         try {
             Scanner scan = new Scanner(file);
             scan.nextLine();//skip header
@@ -87,7 +91,7 @@ public class FileIO {
                 String line = scan.nextLine();
                 String[] splitData = line.split(";");
 
-                if(splitData.length == 4 && (ePath == enumPathing.MOVIE || ePath == enumPathing.COMBI || ePath == enumPathing.WATCHAGAIN || ePath == enumPathing.WATCHLATER)) {
+                if(splitData.length == 4 && (path.equals("movie") || path.equals("combi")|| path.equals("watchAgain") || path.equals("watchLater"))) {
                     String title = splitData[0].trim();
                     int year = Integer.parseInt(splitData[1].trim());
                     String category = splitData[2].trim();
@@ -96,7 +100,7 @@ public class FileIO {
                     Movie movie = new Movie(title, year, category, rating);
                     mediaList.add(movie);
                 }
-                if(splitData.length  == 6 && (ePath == enumPathing.SERIES || ePath == enumPathing.COMBI|| ePath == enumPathing.WATCHAGAIN || ePath == enumPathing.WATCHLATER)){
+                if(splitData.length  == 6 && (path.equals("series") || path.equals("combi")|| path.equals("watchAgain") || path.equals("watchLater"))){
                     String title = splitData[0].trim();
                     int year = Integer.parseInt(splitData[1].trim());
                     String category = splitData[2].trim();
@@ -108,6 +112,7 @@ public class FileIO {
                     mediaList.add(series);
                 }
             }
+           // scan.close();
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
         }
@@ -122,7 +127,7 @@ public class FileIO {
                 writer.write(header + "\n");
             }
             for (Media media : items) {
-                writer.write(media.toString() + "\n");//"Title; year; genre; rating"
+                writer.write(media.toString() + "\n");//"Title; year; genre; rating; Seasons; Episodes"
             }
             writer.close();
         } catch (IOException e) {

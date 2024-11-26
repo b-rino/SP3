@@ -8,19 +8,21 @@ public class MediaClient {
     private String userDataPath;
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
-    private List<Media> allMedia = io.readMediaData(enumPathing.COMBI);
-    private List<Media> movie = io.readMediaData(enumPathing.MOVIE);
-    private List<Media> series  = io.readMediaData(enumPathing.SERIES);
+    private List<Media> allMedia;
+    private List<Media> movie;
+    private List<Media> series;
     private User currentUser;
 
     public MediaClient(User currentUser) {
         this.currentUser = currentUser;
+        allMedia = io.readMediaData("combi", currentUser);
+        movie = io.readMediaData("movie", currentUser);
+        series = io.readMediaData("series", currentUser);
     }
 
     public void displayMenu() {
         ArrayList<String> options = new ArrayList<>();
         options.add("1. Search for content: ");
-       // options.add("2. Search for a series: ");
         options.add("2. Display your watched list: ");
         options.add("3. Display your saved list: ");
         options.add("4. Exit");
@@ -44,7 +46,7 @@ public class MediaClient {
                 }
                 break;
             case 2:
-                // mediaAction.displayWatchAgain();
+                displayWatchAgain();
                 break;
             case 3:
                 displayWatchLater();
@@ -96,11 +98,17 @@ public class MediaClient {
 
 
     public void displayWatchLater() {
-        List<Media> watchLaterList = io.readMediaData(enumPathing.COMBI);
+        List<Media> watchLaterList = io.readMediaData("combi", currentUser);
     }
 
     public void displayWatchAgain() {
-        List<Media> watchAgainList = io.readMediaData();
+        List<Media> watchAgainList = io.readMediaData("watchAgain", currentUser);
+        System.out.println("You have previously watched: \n");
+        for (Media media : watchAgainList) {
+            System.out.println(media.getTitle());
+        }
+        System.out.println("\nMAIN MENU");
+        displayMenu();
     }
 
     public User getCurrentUser() {

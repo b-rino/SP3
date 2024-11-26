@@ -9,3 +9,5 @@ pingu; pingu
 pil; pil
 BigHankDeluxe; Big
 lix; lix
+marie; marie
+lixo; lixo
