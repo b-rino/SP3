@@ -5,7 +5,6 @@ public class Media {
     private int releaseYear;
     private String category;
     private float rating;
-    private FileIO fileIO;
 
     public Media(String title, int releaseYear, String category, float rating) {
         this.title = title;
@@ -14,6 +13,10 @@ public class Media {
         this.rating = rating;
     }
 
+
+    public String getTitle() {
+        return title;
+    }
 
     @Override
     public String toString() {

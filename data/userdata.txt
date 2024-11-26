@@ -1,3 +1,1 @@
-username, password
-Benjamin; Benjamin
-mikkel; mikkel
+username, passwordmikkel; mikkel

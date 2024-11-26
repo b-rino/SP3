@@ -26,6 +26,7 @@ public class UserClient {
         // Creating new user
         else if (answerAlreadyUser.equalsIgnoreCase("N")) {
             System.out.println("Creating an account ");
+            // TODO: Search userdata if username already exists
             String username = ui.promptText("Enter your username: ");
             String password = ui.promptText("Enter your password: ");
             List<User> saveNewUser = new ArrayList<>();
