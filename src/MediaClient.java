@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.*;
 
 public class MediaClient {
     private String name;
@@ -52,6 +53,7 @@ public class MediaClient {
                 displayWatchLater();
                 break;
             case 4:
+                JOptionPane.showMessageDialog(null, "Thank you for using Chill!");
                 System.out.println("Thank you for using Chill");
                 System.exit(0);
                 break;
