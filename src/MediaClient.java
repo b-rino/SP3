@@ -51,6 +51,13 @@ public class MediaClient {
             case 3:
                 displayWatchLater();
                 break;
+            case 4:
+                System.out.println("Thank you for using Chill");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid choice - please choose a number between 1 and 4");
+                displayMenu();
         }
     }
 
