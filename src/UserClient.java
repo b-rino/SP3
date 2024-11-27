@@ -9,7 +9,7 @@ public class UserClient {
 
 
     public User login() {
-        List<User> users = io.readUserData(enumPathing.USER);
+        List<User> users = io.readUserData();
 
         String answerAlreadyUser = ui.promptText("Do you already have a user? Y / N ?");
 
@@ -37,7 +37,7 @@ public class UserClient {
             List<User> saveNewUser = new ArrayList<>();
             User newUser = new User(username, password);
             saveNewUser.add(newUser);
-            io.saveUserData(saveNewUser, enumPathing.USER, "username, password");
+            io.saveUserData(saveNewUser, "username, password");
             System.out.println("You have successfully created an account!");
             currentUsername = username;
             return newUser;

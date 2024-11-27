@@ -11,3 +11,5 @@ BigHankDeluxe; Big
 lix; lix
 marie; marie
 lixo; lixo
+onsdag; onsdag
+philip; philip

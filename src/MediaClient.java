@@ -98,12 +98,12 @@ public class MediaClient {
 
 
     public void displayWatchLater() {
-        List<Media> watchLaterList = io.readMediaData("combi", currentUser);
+        List<Media> watchLaterList = io.readMediaData("watchLater", currentUser);
     }
 
     public void displayWatchAgain() {
         List<Media> watchAgainList = io.readMediaData("watchAgain", currentUser);
-        System.out.println("You have previously watched: \n");
+        System.out.println("\nYou have previously watched: \n");
         for (Media media : watchAgainList) {
             System.out.println(media.getTitle());
         }

@@ -15,8 +15,8 @@ public class FileIO {
     private String pathCombi = "data//allmedia.txt";
 
 
-    //TODO: Hvorfor give en path, når den altid er den samme?
-    public List<User> readUserData(enumPathing ePath) {
+
+    public List<User> readUserData() {
         String path = this.pathUser;
         List<User> userData = new ArrayList<>();
         File file = new File(path);
@@ -38,8 +38,7 @@ public class FileIO {
         return userData;
     }
 
-    //TODO: Hvorfor give en path, når den altid er den samme?
-    public void saveUserData(List<User> userData, enumPathing ePath, String header) {
+    public void saveUserData(List<User> userData, String header) {
         String path = this.pathUser;
         try {
             FileWriter writer = new FileWriter(path, true);
