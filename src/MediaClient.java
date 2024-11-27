@@ -94,6 +94,8 @@ public class MediaClient {
     }
     public void searchByCategory() {
         List<Media> chosenCategory = new ArrayList<>();
+        System.out.println("You can chose between: Comedy, Drama, Horror, Romance, Film-Noir, Adventure, Family, Fantasy, Thriller" +
+                " Sport, Action, Biography, Western, History, Crime\n");
         String answer = ui.promptText("Please enter a category: ");
         for (Media media : allMedia) {
             String[] categories = media.getCategory().split(", ");
@@ -103,7 +105,10 @@ public class MediaClient {
                 }
             }
         }
-
+        if(chosenCategory.isEmpty()){
+            System.out.println("Category " + answer + " not found" );
+            searchByCategory();
+        }
         for (int i = 0; i < chosenCategory.size(); i++) {
             Media media = chosenCategory.get(i);
             System.out.println((i + 1) +": " + media.getTitle());
@@ -118,13 +123,18 @@ public class MediaClient {
                     System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to you watched list");
                     displayMenu();
                 }
-                if(selected == 2){
+                else if(selected == 2){
                     currentUser.addToWatchLater(chosenCategory.get(selection-1));
                     System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to your watch-later list");
                     System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
-                if(selected == 3){
+                else if(selected == 3){
+                    System.out.println("\n MAIN MENU\n");
+                    displayMenu();
+                }
+                else {
+                    System.out.println("Invalid choice");
                     System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
@@ -164,11 +174,27 @@ public class MediaClient {
     public void displayWatchAgain() {
         List<Media> watchAgainList = io.readMediaData("watchAgain", currentUser);
         System.out.println("\nYou have previously watched: \n");
-        for (Media media : watchAgainList) {
-            System.out.println(media.getTitle());
+        for (int i = 0; i < watchAgainList.size(); i++) {
+            Media media = watchAgainList.get(i);
+            System.out.println((i + 1) +": " + media.getTitle());
         }
-        System.out.println("\nMAIN MENU");
-        displayMenu();
+        int answer = ui.promptNumeric("Please type a number to select the media ");
+        System.out.println("You have chosen " + watchAgainList.get(answer-1).getTitle());
+        int choice = ui.promptNumeric("\n1. Watch movie\n2. Main Menu");
+        if (choice == 1){
+            System.out.println("You're now watching " + watchAgainList.get(answer-1).getTitle());
+            System.out.println("\nMAIN MENU");
+            displayMenu();
+        }
+        else if (choice == 2) {
+            System.out.println("\nMAIN MENU");
+            displayMenu();
+        }
+        else {
+            System.out.println("Invalid choice");
+            System.out.println("\n MAIN MENU\n");
+            displayMenu();
+        }
     }
 
     public User getCurrentUser() {

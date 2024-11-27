@@ -1,9 +1,11 @@
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import java.io.File;
+import java.util.TreeSet;
 
 
 public class User {
@@ -47,11 +49,11 @@ public class User {
     }
 
     public void addToWatchLater (Media media) {
-        List<Media> saved = watchLater;
-        saved.add(media);
         FileIO fileio = new FileIO();
+        List<Media> saved = this.watchLater;
+        saved.add(media);
         fileio.saveMediaData(saved, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
-
+        System.out.println("Your media was added to your list");
     }
 
 
