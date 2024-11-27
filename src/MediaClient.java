@@ -43,6 +43,7 @@ public class MediaClient {
                     searchByCategory();
                 else {
                     System.out.println("Invalid choice");
+                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
                 break;
@@ -74,15 +75,18 @@ public class MediaClient {
                     System.out.println("You're now watching " + media.getTitle());
                     currentUser.addToWatchAgain(media);
                     System.out.println(media.getTitle() + " has been added to your watched list");
+                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
                 if (selection == 2) {
                     currentUser.addToWatchLater(media);
                     System.out.println(media.getTitle() + " has been added to your watch-later list");
+                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
 
                     }
                 if (selection == 3) {
+                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
             }
@@ -105,8 +109,26 @@ public class MediaClient {
             System.out.println((i + 1) +": " + media.getTitle());
         }
 
-        int selection = ui.promptNumeric("Please type the number of the movie or series you want to watch");
-        System.out.println("You are now watching " + chosenCategory.get(selection-1).getTitle());
+        int selection = ui.promptNumeric("Please type the number of the movie or series, you want to select");
+        System.out.println("You have chosen " + chosenCategory.get(selection-1).getTitle());
+                int selected = ui.promptNumeric("\n1. Watch movie\n2. Save to watch later\n3. Main Menu");
+                if (selected == 1){
+                    System.out.println("You're now watching " + chosenCategory.get(selection-1).getTitle());
+                    currentUser.addToWatchAgain(chosenCategory.get(selection-1));
+                    System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to you watched list");
+                    displayMenu();
+                }
+                if(selected == 2){
+                    currentUser.addToWatchLater(chosenCategory.get(selection-1));
+                    System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to your watch-later list");
+                    System.out.println("\n MAIN MENU\n");
+                    displayMenu();
+                }
+                if(selected == 3){
+                    System.out.println("\n MAIN MENU\n");
+                    displayMenu();
+                }
+
                 currentUser.addToWatchAgain(chosenCategory.get(selection-1));
                 System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to you watched list");
     }
@@ -114,11 +136,29 @@ public class MediaClient {
 
     public void displayWatchLater() {
         List<Media> watchLaterList = io.readMediaData("watchLater", currentUser);
-        for (Media media : watchLaterList) {
-            System.out.println(media.getTitle());
+        for (int i = 0; i < watchLaterList.size(); i++) {
+            Media media = watchLaterList.get(i);
+            System.out.println((i + 1) +": " + media.getTitle());
         }
-        System.out.println("\nMAIN MENU");
-        displayMenu();
+        int answer = ui.promptNumeric("Please type a number to select the media ");
+        System.out.println("You have chosen " + watchLaterList.get(answer-1).getTitle());
+        int choice = ui.promptNumeric("\n1. Watch movie\n2. Main Menu");
+        if (choice == 1){
+            System.out.println("You're now watching " + watchLaterList.get(answer-1).getTitle());
+            currentUser.addToWatchAgain(watchLaterList.get(answer-1));
+            System.out.println(watchLaterList.get(answer-1).getTitle() + " has been added to you watched list");
+            System.out.println("\nMAIN MENU");
+            displayMenu();
+        }
+       else if (choice == 2) {
+            System.out.println("\nMAIN MENU");
+            displayMenu();
+        }
+       else {
+           System.out.println("Invalid choice");
+           System.out.println("\n MAIN MENU\n");
+           displayMenu();
+        }
     }
 
     public void displayWatchAgain() {

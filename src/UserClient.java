@@ -7,7 +7,7 @@ public class UserClient {
     private TextUI ui = new TextUI();
     private String currentUsername;
 
-
+    // login
     public User login() {
         List<User> users = io.readUserData();
 
@@ -24,7 +24,7 @@ public class UserClient {
                 return user;
             } else {
                 System.out.println("You have entered a invalid username or password!");
-               return login();
+                return login();
             }
 
             // Creating new user
@@ -33,6 +33,12 @@ public class UserClient {
             System.out.println("Creating an account ");
             // TODO: Search userdata if username already exists
             String username = ui.promptText("Enter your username: ");
+            for (User user : users) {
+                if (username.equals(user.getUsername())) {
+                    System.out.println("The username already exists!");
+                    return login();
+                }
+            }
             String password = ui.promptText("Enter your password: ");
             List<User> saveNewUser = new ArrayList<>();
             User newUser = new User(username, password);
@@ -42,7 +48,10 @@ public class UserClient {
             currentUsername = username;
             return newUser;
         }
-        return null;
+        else {
+            System.out.println("You have entered an invalid choice!\nPlease try again!");
+            return login();
+        }
     }
 
     public String getCurrentUsername() {
