@@ -46,6 +46,14 @@ public class User {
         fileio.saveMediaData(saved, this.pathWatchAgain, "title, year, category, rating, seasons, episodes");
     }
 
+    public void addToWatchLater (Media media) {
+        List<Media> saved = watchLater;
+        saved.add(media);
+        FileIO fileio = new FileIO();
+        fileio.saveMediaData(saved, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
+
+    }
+
 
 
 

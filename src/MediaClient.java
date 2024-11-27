@@ -59,17 +59,23 @@ public class MediaClient {
         String answer = ui.promptText("Please enter a title: ");
         for (Media media : allMedia) {
             if (media.getTitle().equalsIgnoreCase(answer)) {
-                String selection = ui.promptText("Do you want to watch? " + media.getTitle() + " Y / N");
-                // TODO: Should this be made in playMedia method indstead?
-                if (selection.equalsIgnoreCase("Y"))
+                int selection = ui.promptNumeric("You have chosen " + media.getTitle() +
+                        "\n1. Watch movie\n2. Save to watch later\n3. Main Menu");
+                if (selection == 1) {
                     System.out.println("You're now watching " + media.getTitle());
                     currentUser.addToWatchAgain(media);
-                System.out.println(media.getTitle() + " has been added to you watched list");
-                // TODO: If Y add to watchAgain
-                if (selection.equalsIgnoreCase("N"))
-                    // TODO: Prompt user for another search or back to menu
-                    // System.out.println("Do you want to search for a different title or return to menu? ");
-                    searchByTitle();
+                    System.out.println(media.getTitle() + " has been added to your watched list");
+                    displayMenu();
+                }
+                if (selection == 2) {
+                    currentUser.addToWatchLater(media);
+                    System.out.println(media.getTitle() + " has been added to your watch-later list");
+                    displayMenu();
+
+                    }
+                if (selection == 3) {
+                    displayMenu();
+                }
             }
         }
     }
@@ -99,6 +105,11 @@ public class MediaClient {
 
     public void displayWatchLater() {
         List<Media> watchLaterList = io.readMediaData("watchLater", currentUser);
+        for (Media media : watchLaterList) {
+            System.out.println(media.getTitle());
+        }
+        System.out.println("\nMAIN MENU");
+        displayMenu();
     }
 
     public void displayWatchAgain() {
