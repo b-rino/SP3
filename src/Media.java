@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Media {
     private String title;
@@ -25,6 +26,19 @@ public class Media {
     @Override
     public String toString() {
         return title + "; " + releaseYear + "; " + category +"; " + rating;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Media media = (Media) obj;
+        return title.equals(media.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title);
     }
 }
 

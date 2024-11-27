@@ -53,7 +53,6 @@ public class User {
         List<Media> saved = this.watchLater;
         saved.add(media);
         fileio.saveMediaData(saved, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
-        System.out.println("Your media was added to your list");
     }
 
 
