@@ -10,17 +10,6 @@ public class TextUI {
         System.out.println(msg);
     }
 
-    public boolean promptBinary(String msg){
-        String input = promptText(msg);
-        if(input.equalsIgnoreCase("Y")){
-            return true;
-        }
-        else if(input.equalsIgnoreCase("N")){
-            return false;
-        }
-        return promptBinary(msg);
-    }
-
     public int promptNumeric(String msg) {
         System.out.println(msg);              // Stille brugeren et spørgsmål
         String input = scan.nextLine();
@@ -41,5 +30,4 @@ public class TextUI {
         String input = scan.nextLine();
         return input;
     }
-
 }

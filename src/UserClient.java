@@ -1,12 +1,8 @@
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserClient {
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
-    private String currentUsername;
-
 
     public User login() {
         List<User> users = io.readUserData();
@@ -19,7 +15,6 @@ public class UserClient {
 
             if (users.contains(user)) {
                 System.out.println("You have successfully logged in!\nWelcome to CHILL");
-                currentUsername = username;
                 return user;
             } else {
                 System.out.println("You have entered a invalid username or password!");
@@ -38,12 +33,9 @@ public class UserClient {
                 }
             }
             String password = ui.promptText("Enter your password: ");
-            List<User> saveNewUser = new ArrayList<>();
             User newUser = new User(username, password);
-            saveNewUser.add(newUser);
-            io.saveUserData(saveNewUser, "username, password");
+            io.saveUserData(newUser, "username, password");
             System.out.println("You have successfully created an account!\nWelcome to CHILL");
-            currentUsername = username;
             return newUser;
         }
         else {

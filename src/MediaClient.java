@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MediaClient {
-    private String name;
-    private List<User> users;
-    private String userDataPath;
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
     private List<Media> allMedia;
@@ -198,7 +195,4 @@ public class MediaClient {
         }
     }
 
-    public User getCurrentUser() {
-        return currentUser;
-    }
 }

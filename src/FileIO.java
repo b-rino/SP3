@@ -37,16 +37,14 @@ public class FileIO {
     }
 
     // For when creating a new user. Writes the username and password to .txt file.
-    public void saveUserData(List<User> userData, String header) {
+    public void saveUserData(User user, String header) {
         String path = this.pathUser;
         try {
             FileWriter writer = new FileWriter(path, true);
             if(new File(path).length() == 0) {
                 writer.write(header + "\n");
             }
-            for (User user : userData) {
                 writer.write(user.toString() + "\n");
-            }
 
             writer.close();
         } catch (IOException e) {
@@ -118,20 +116,17 @@ public class FileIO {
     }
 
     // Our method for writing to our .txt files.
-    public void saveMediaData(List<Media> items, String path, String header) {
+    public void saveMediaData(Media media, String path, String header) {
         try {
             FileWriter writer = new FileWriter(path, true); // Secures that we don't overwrite
             if(new File(path).length() == 0) {
                 writer.write(header + "\n");
             }
-            for (Media media : items) {
                 // Writing the modified toString with ; so that it works with our read method. 
                 writer.write(media.toString() + "\n"); // "Title; year; genre; rating; Seasons; Episodes"
-            }
             writer.close();
         } catch (IOException e) {
             System.out.println("something went wrong when writing to file");
         }
     }
-
 }
