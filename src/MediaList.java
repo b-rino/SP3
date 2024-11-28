@@ -42,5 +42,5 @@ public class MediaList {
     public static void welcome(){
         String welcometext = "Welcome to Chill";
         JOptionPane.showMessageDialog(null, welcometext);
-    }
+    }//
 }
