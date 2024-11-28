@@ -100,7 +100,7 @@ public class MediaClient {
                 }
             }
         }
-    }
+    }//
     public void searchByCategory() {
         List<Media> chosenCategory = new ArrayList<>();
         System.out.println("You can chose between: Comedy, Drama, Horror, Romance, Film-Noir, Adventure, Family, Fantasy, Thriller" +
