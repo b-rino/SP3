@@ -18,3 +18,4 @@ philip; philip
 philip; philip
 magrethe; magrethe
 mus; mus
+kingu; kingu

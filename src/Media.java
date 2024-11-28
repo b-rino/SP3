@@ -33,12 +33,12 @@ public class Media {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Media media = (Media) obj;
-        return title.equals(media.title);
+        return releaseYear == media.releaseYear && Double.compare(media.rating, rating) == 0 && Objects.equals(title, media.title) && Objects.equals(category, media.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(title, releaseYear, category, rating);
     }
 }
 

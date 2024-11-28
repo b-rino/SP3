@@ -49,10 +49,19 @@ public class User {
     }
 
     public void addToWatchLater (Media media) {
+        MediaClient mediaClient = new MediaClient(User.this);
         FileIO fileio = new FileIO();
+        List<Media> alreadyOnList = fileio.readMediaData("watchLater", this);
         List<Media> saved = this.watchLater;
-        saved.add(media);
-        fileio.saveMediaData(saved, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
+        if (alreadyOnList.contains(media) || saved.contains(media)) {
+            System.out.println(media.getTitle() + " already exists on your list");
+            mediaClient.displayMenu();
+        }else {
+            System.out.println(media.getTitle() + " has been added to your watch-later list");
+            saved.add(media);
+            fileio.saveMediaData(saved, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
+            mediaClient.displayMenu();
+        }
     }
 
 

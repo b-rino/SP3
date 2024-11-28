@@ -79,7 +79,7 @@ public class MediaClient {
                     displayMenu();
                 }
                 if (selection == 2) {
-                    List<Media> alreadyOnList = io.readMediaData("watchLater", currentUser);
+                   /* List<Media> alreadyOnList = io.readMediaData("watchLater", currentUser);
                         if (alreadyOnList.contains(media)) {
                             System.out.println(media.getTitle() + " already exists on your list");
                             searchByTitle();
@@ -91,7 +91,8 @@ public class MediaClient {
 
                         }
                     System.out.println("\n MAIN MENU\n");
-                    displayMenu();
+                    displayMenu();*/
+                    currentUser.addToWatchLater(media);
 
                     }
                 if (selection == 3) {
