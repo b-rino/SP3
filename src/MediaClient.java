@@ -54,7 +54,7 @@ public class MediaClient {
                 displayWatchLater();
                 break;
             case 4:
-                JOptionPane.showMessageDialog(null, "Thank you for using Chill!");
+                //JOptionPane.showMessageDialog(null, "Thank you for using Chill!");
                 System.out.println("Thank you for using Chill");
                 System.exit(0);
                 break;
@@ -159,6 +159,10 @@ public class MediaClient {
             Media media = watchLaterList.get(i);
             System.out.println((i + 1) +": " + media.getTitle());
         }
+        if(watchLaterList.isEmpty()){
+            System.out.println("You have no current saved media");
+            displayMenu();
+        }
         int answer = ui.promptNumeric("Please type a number to select the media ");
         System.out.println("You have chosen " + watchLaterList.get(answer-1).getTitle());
         int choice = ui.promptNumeric("\n1. Watch movie\n2. Main Menu");
@@ -186,6 +190,10 @@ public class MediaClient {
         for (int i = 0; i < watchAgainList.size(); i++) {
             Media media = watchAgainList.get(i);
             System.out.println((i + 1) +": " + media.getTitle());
+        }
+        if(watchAgainList.isEmpty()){
+            System.out.println("You have no current saved media");
+            displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
         System.out.println("You have chosen " + watchAgainList.get(answer-1).getTitle());
