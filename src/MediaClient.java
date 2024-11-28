@@ -25,7 +25,7 @@ public class MediaClient {
         ArrayList<String> options = new ArrayList<>();
         System.out.println("\nMAIN MENU\n");
         options.add("1. Search for content: ");
-        options.add("2. Display your watched list: ");
+        options.add("2. Display your watched history: ");
         options.add("3. Display your saved list: ");
         options.add("4. Exit");
 
@@ -146,6 +146,10 @@ public class MediaClient {
             displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
+        if (answer > watchLaterList.size()) {
+            System.out.println("Invalid choice");
+            displayWatchLater();
+        }
         System.out.println("You have chosen " + watchLaterList.get(answer-1).getTitle());
         int choice = ui.promptNumeric("\n1. Watch media\n2. Main Menu");
         if (choice == 1){
@@ -165,7 +169,7 @@ public class MediaClient {
 
     public void displayWatchAgain() {
         List<Media> watchAgainList = io.readMediaData("watchAgain", currentUser);
-        System.out.println("\nYou have previously watched: \n");
+        System.out.println("\nHistory of watched content: \n");
         for (int i = 0; i < watchAgainList.size(); i++) {
             Media media = watchAgainList.get(i);
             System.out.println((i + 1) +": " + media.getTitle());
@@ -175,6 +179,10 @@ public class MediaClient {
             displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
+        if (answer > watchAgainList.size()) {
+            System.out.println("Invalid choice");
+            displayWatchAgain();
+        }
         System.out.println("You have chosen " + watchAgainList.get(answer-1).getTitle());
         int choice = ui.promptNumeric("\n1. Watch media\n2. Main Menu");
         if (choice == 1){

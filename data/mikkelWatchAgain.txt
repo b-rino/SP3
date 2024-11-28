@@ -1,2 +1,12 @@
 title, year, category, rating, seasons, episodes
 Titanic; 1997; Drama, Romance; 7.8
+The Godfather; 1972; Crime, Drama; 9.2
+The Godfather; 1972; Crime, Drama; 9.2
+ET; 1982; Family, Sci-fi; 7.9
+The Godfather; 1972; Crime, Drama; 9.2
+ET; 1982; Family, Sci-fi; 7.9
+ET; 1982; Family, Sci-fi; 7.9
+The Godfather; 1972; Crime, Drama; 9.2
+ET; 1982; Family, Sci-fi; 7.9
+ET; 1982; Family, Sci-fi; 7.9
+The Godfather; 1972; Crime, Drama; 9.2
