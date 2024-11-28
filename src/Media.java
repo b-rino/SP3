@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Media {
@@ -13,7 +12,6 @@ public class Media {
         this.category = category;
         this.rating = rating;
     }
-
 
     public String getTitle() {
         return title;
@@ -33,12 +31,12 @@ public class Media {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Media media = (Media) obj;
-        return releaseYear == media.releaseYear && Double.compare(media.rating, rating) == 0 && Objects.equals(title, media.title) && Objects.equals(category, media.category);
+        return Objects.equals(title, media.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, releaseYear, category, rating);
+        return Objects.hash(title);
     }
 }
 

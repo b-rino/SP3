@@ -1,0 +1,3 @@
+title, year, category, rating, seasons, episodesTitanic; 1997; Drama, Romance; 7.8
+Titanic; 1997; Drama, Romance; 7.8
+GLOW; 2017; Comedy, Drama, Sport; 8.2; 2; 20

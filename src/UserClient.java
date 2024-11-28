@@ -1,37 +1,30 @@
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserClient {
     private FileIO io = new FileIO();
     private TextUI ui = new TextUI();
-    private String currentUsername;
 
-    // login
     public User login() {
         List<User> users = io.readUserData();
-
         String answerAlreadyUser = ui.promptText("Do you already have a user? Y / N ?");
-
+        // Login current user
         if (answerAlreadyUser.equalsIgnoreCase("Y")) {
             String username = ui.promptText("Enter your username: ");
             String password = ui.promptText("Enter your password: ");
             User user = new User(username, password);
 
             if (users.contains(user)) {
-                System.out.println("You have successfully logged in!");
-                currentUsername = username;
+                System.out.println("You have successfully logged in!\nWelcome to CHILL");
                 return user;
             } else {
                 System.out.println("You have entered a invalid username or password!");
                 return login();
             }
 
-            // Creating new user
         }
+        // Creating new user
         else if (answerAlreadyUser.equalsIgnoreCase("N")) {
             System.out.println("Creating an account ");
-            // TODO: Search userdata if username already exists
             String username = ui.promptText("Enter your username: ");
             for (User user : users) {
                 if (username.equals(user.getUsername())) {
@@ -40,22 +33,15 @@ public class UserClient {
                 }
             }
             String password = ui.promptText("Enter your password: ");
-            List<User> saveNewUser = new ArrayList<>();
             User newUser = new User(username, password);
-            saveNewUser.add(newUser);
-            io.saveUserData(saveNewUser, "username, password");
-            System.out.println("You have successfully created an account!");
-            currentUsername = username;
+            io.saveUserData(newUser, "username, password");
+            System.out.println("You have successfully created an account!\nWelcome to CHILL");
             return newUser;
         }
         else {
             System.out.println("You have entered an invalid choice!\nPlease try again!");
             return login();
         }
-    }
-
-    public String getCurrentUsername() {
-        return currentUsername;
     }
 }
 

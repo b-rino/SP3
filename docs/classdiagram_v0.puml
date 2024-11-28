@@ -3,12 +3,7 @@
 
 class Main{
 + static void main(String[] args)
-}
 
-class Client{
--UserClient userClient
-- Media mediaClient
-+void setup()
 }
 
 class Media{
@@ -24,32 +19,31 @@ class MediaClient{
 -TextUI ui
 -FileIO io
 -List<Media> mediaList
-+void closeClient()
+-User currentUser;
++MediaClient(User currentUser)
 +void displayMenu()
-+List<Media> loadAllMediaData()
-+playMedia()
-+saveToWatchLater()
-+removeFromWatchLater()
 +searchByCategory()
 +searchByTitle()
-
++displayWatchAgain()
++displayWatchLater()
 }
 
 
 class User{
--List<Media> watchLater
--List<Media> watchAgain
+-String pathWatchAgain;
+-String pathWatchLater;
 -String username
 -String password
 +User(String username, String password)
-+setUsername()
-+setPassword()
++addToWatchAgain()
++addToWatchLater()
 +getUsername()
-+getPassword()
 }
 
 
 class Movie{
+
++ Movie(String title, int releaseYear, String category, float rating)
 }
 
 class Series{
@@ -62,12 +56,8 @@ class Series{
 class UserClient{
 -TextUI ui
 -FileIO io
--List<UserList> users
 +login()
-+void addToWatchAgain()
-+void addToWatchLater()
-+displayWatchAgain()
-+displayWatchLater()
+
 }
 
 
@@ -78,26 +68,24 @@ class TextUI{
 +void displayMsg(String s)
 +int promptNumeric(String msg)
 +String promptText(String msg)
-+boolean promptBinary(String msg)
 }
+
 class FileIO{
-+List<User> readUserData(enumPathing ePath)
-+void saveUserData(List<User> users, enumPathing ePath, String Header)
-+List<Media> readMediaData(enumPathing ePath)
-+void saveMediaData(List<Media> medias, enumPathing ePath, String Header)
++List<User> readUserData(String path, User user)
++void saveUserData(User user, String path, String Header)
++List<Media> readMediaData(String path, User user)
++void saveMediaData(Media media, String path, String Header)
 }
 }
 
 
 Media<|--Series
 Media <|-- Movie
-Client *-- MediaClient
+Main *-- MediaClient
 MediaClient *-- "util"
 MediaClient -- Media
-Client *-- UserClient
+Main *-- UserClient
 UserClient -- User
 UserClient *--"util"
-Main *-- Client
-Client *-- "util"
 
 @enduml

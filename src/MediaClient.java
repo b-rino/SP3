@@ -1,19 +1,16 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import javax.swing.*;
 
 public class MediaClient {
-    private String name;
-    private List<User> users;
-    private String userDataPath;
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
     private List<Media> allMedia;
+    // Movie and series are currently redundant but saved for future expansion.
     private List<Media> movie;
     private List<Media> series;
     private User currentUser;
 
+    // Reads the specific user's .txt file.
     public MediaClient(User currentUser) {
         this.currentUser = currentUser;
         allMedia = io.readMediaData("combi", currentUser);
@@ -23,8 +20,9 @@ public class MediaClient {
 
     public void displayMenu() {
         ArrayList<String> options = new ArrayList<>();
+        System.out.println("\nMAIN MENU\n");
         options.add("1. Search for content: ");
-        options.add("2. Display your watched list: ");
+        options.add("2. Display your watched history: ");
         options.add("3. Display your saved list: ");
         options.add("4. Exit");
 
@@ -43,7 +41,6 @@ public class MediaClient {
                     searchByCategory();
                 else {
                     System.out.println("Invalid choice");
-                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
                 break;
@@ -54,8 +51,7 @@ public class MediaClient {
                 displayWatchLater();
                 break;
             case 4:
-                //JOptionPane.showMessageDialog(null, "Thank you for using Chill!");
-                System.out.println("Thank you for using Chill");
+                System.out.println("Thank you for using CHILL");
                 System.exit(0);
                 break;
             default:
@@ -64,44 +60,29 @@ public class MediaClient {
         }
     }
 
-
     public void searchByTitle() {
         String answer = ui.promptText("Please enter a title: ");
         for (Media media : allMedia) {
             if (media.getTitle().equalsIgnoreCase(answer)) {
                 int selection = ui.promptNumeric("You have chosen " + media.getTitle() +
-                        "\n1. Watch movie\n2. Save to watch later\n3. Main Menu");
+                        "\n1. Watch media\n2. Save to watch later\n3. Main Menu");
                 if (selection == 1) {
                     System.out.println("You're now watching " + media.getTitle());
                     currentUser.addToWatchAgain(media);
                     System.out.println(media.getTitle() + " has been added to your watched list");
-                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
                 if (selection == 2) {
-                   /* List<Media> alreadyOnList = io.readMediaData("watchLater", currentUser);
-                        if (alreadyOnList.contains(media)) {
-                            System.out.println(media.getTitle() + " already exists on your list");
-                            searchByTitle();
-                        }
-                        else {
-
-                            currentUser.addToWatchLater(media);
-                            System.out.println(media.getTitle() + " has been added to your watch-later list");
-
-                        }
-                    System.out.println("\n MAIN MENU\n");
-                    displayMenu();*/
                     currentUser.addToWatchLater(media);
 
                     }
                 if (selection == 3) {
-                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
             }
         }
-    }//
+    }
+
     public void searchByCategory() {
         List<Media> chosenCategory = new ArrayList<>();
         System.out.println("You can chose between: Comedy, Drama, Horror, Romance, Film-Noir, Adventure, Family, Fantasy, Thriller" +
@@ -126,7 +107,7 @@ public class MediaClient {
 
         int selection = ui.promptNumeric("Please type the number of the movie or series, you want to select");
         System.out.println("You have chosen " + chosenCategory.get(selection-1).getTitle());
-                int selected = ui.promptNumeric("\n1. Watch movie\n2. Save to watch later\n3. Main Menu");
+                int selected = ui.promptNumeric("\n1. Watch media\n2. Save to watch later\n3. Main Menu");
                 if (selected == 1){
                     System.out.println("You're now watching " + chosenCategory.get(selection-1).getTitle());
                     currentUser.addToWatchAgain(chosenCategory.get(selection-1));
@@ -136,16 +117,13 @@ public class MediaClient {
                 else if(selected == 2){
                     currentUser.addToWatchLater(chosenCategory.get(selection-1));
                     System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to your watch-later list");
-                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
                 else if(selected == 3){
-                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
                 else {
                     System.out.println("Invalid choice");
-                    System.out.println("\n MAIN MENU\n");
                     displayMenu();
                 }
 
@@ -165,29 +143,30 @@ public class MediaClient {
             displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
+        if (answer > watchLaterList.size()) {
+            System.out.println("Invalid choice");
+            displayWatchLater();
+        }
         System.out.println("You have chosen " + watchLaterList.get(answer-1).getTitle());
-        int choice = ui.promptNumeric("\n1. Watch movie\n2. Main Menu");
+        int choice = ui.promptNumeric("\n1. Watch media\n2. Main Menu");
         if (choice == 1){
             System.out.println("You're now watching " + watchLaterList.get(answer-1).getTitle());
             currentUser.addToWatchAgain(watchLaterList.get(answer-1));
             System.out.println(watchLaterList.get(answer-1).getTitle() + " has been added to you watched list");
-            System.out.println("\nMAIN MENU");
             displayMenu();
         }
        else if (choice == 2) {
-            System.out.println("\nMAIN MENU");
             displayMenu();
         }
        else {
            System.out.println("Invalid choice");
-           System.out.println("\n MAIN MENU\n");
            displayMenu();
         }
     }
 
     public void displayWatchAgain() {
         List<Media> watchAgainList = io.readMediaData("watchAgain", currentUser);
-        System.out.println("\nYou have previously watched: \n");
+        System.out.println("\nHistory of watched content: \n");
         for (int i = 0; i < watchAgainList.size(); i++) {
             Media media = watchAgainList.get(i);
             System.out.println((i + 1) +": " + media.getTitle());
@@ -197,25 +176,23 @@ public class MediaClient {
             displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
+        if (answer > watchAgainList.size()) {
+            System.out.println("Invalid choice");
+            displayWatchAgain();
+        }
         System.out.println("You have chosen " + watchAgainList.get(answer-1).getTitle());
-        int choice = ui.promptNumeric("\n1. Watch movie\n2. Main Menu");
+        int choice = ui.promptNumeric("\n1. Watch media\n2. Main Menu");
         if (choice == 1){
             System.out.println("You're now watching " + watchAgainList.get(answer-1).getTitle());
-            System.out.println("\nMAIN MENU");
             displayMenu();
         }
         else if (choice == 2) {
-            System.out.println("\nMAIN MENU");
             displayMenu();
         }
         else {
             System.out.println("Invalid choice");
-            System.out.println("\n MAIN MENU\n");
             displayMenu();
         }
     }
 
-    public User getCurrentUser() {
-        return currentUser;
-    }
 }

@@ -1,29 +1,19 @@
 import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import java.io.File;
-import java.util.TreeSet;
-
 
 public class User {
     private String password;
     private String username;
-    private List<Media> watchAgain = new ArrayList<>();
-    private List<Media> watchLater = new ArrayList<>();
-    private String path = "data//userdata.txt";
     private String pathWatchAgain;
     private String pathWatchLater;
     File fileWatchAgain;
     File fileWatchLater;
 
     public User(String username, String password) {
-        // TODO: Set username, set password.
         this.username = username;
         this.password = password;
-        //TODO opret ny fil hver gang der bliver oprettet en ny User
         this.pathWatchAgain = "data//" + username + "WatchAgain.txt";
         this.pathWatchLater = "data//" + username + "WatchLater.txt";
         this.fileWatchAgain = new File(pathWatchAgain);
@@ -41,64 +31,30 @@ public class User {
     }
 
     public void addToWatchAgain (Media media) {
-        // TODO: Potentially move to userClient so that we dont use fileIO here."
-        List<Media> saved = watchAgain;
-        saved.add(media);
         FileIO fileio = new FileIO();
-        fileio.saveMediaData(saved, this.pathWatchAgain, "title, year, category, rating, seasons, episodes");
+        fileio.saveMediaData(media, this.pathWatchAgain, "title, year, category, rating, seasons, episodes");
     }
 
     public void addToWatchLater (Media media) {
         MediaClient mediaClient = new MediaClient(User.this);
         FileIO fileio = new FileIO();
         List<Media> alreadyOnList = fileio.readMediaData("watchLater", this);
-        List<Media> saved = this.watchLater;
-        if (alreadyOnList.contains(media) || saved.contains(media)) {
+        if (alreadyOnList.contains(media)) {
             System.out.println(media.getTitle() + " already exists on your list");
             mediaClient.displayMenu();
         }else {
             System.out.println(media.getTitle() + " has been added to your watch-later list");
-            saved.add(media);
-            fileio.saveMediaData(saved, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
+            fileio.saveMediaData(media, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
             mediaClient.displayMenu();
         }
-    }
-
-
-
-
-    /*
-    public void setPassword() {
-        password = ui.promptText("Please enter your password: ");
-        if(password == null || password.equals("")){
-            throw new IllegalArgumentException("Password cannot be empty");
-        }
-        else {
-            this.password = password;
-        }
-    }
-
-    public void setUsername() {
-        username = ui.promptText("Please enter your username: ");
-        if(username == null || username.equals("")){
-            throw new IllegalArgumentException("Username cannot be empty");
-        }
-        else {
-            this.username = username;
-        }
-    }
-
-     */
-
-    public String getPassword() {
-        return password;
     }
 
     public String getUsername() {
         return username;
     }
 
-    @Override public boolean equals(Object o) {
+    @Override
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
@@ -110,7 +66,8 @@ public class User {
         return  username + "; " + password;
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return Objects.hash(username, password);
     }
 }
