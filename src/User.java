@@ -58,7 +58,6 @@ public class User {
 
 
 
-
     /*
     public void setPassword() {
         password = ui.promptText("Please enter your password: ");
