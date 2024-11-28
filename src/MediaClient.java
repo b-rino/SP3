@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import javax.swing.*;
 
 public class MediaClient {
     private String name;
@@ -10,10 +8,12 @@ public class MediaClient {
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
     private List<Media> allMedia;
+    // Movie and series are currently redundant but saved for future expansion.
     private List<Media> movie;
     private List<Media> series;
     private User currentUser;
 
+    // Reads the specific user's .txt file.
     public MediaClient(User currentUser) {
         this.currentUser = currentUser;
         allMedia = io.readMediaData("combi", currentUser);
@@ -23,7 +23,7 @@ public class MediaClient {
 
     public void displayMenu() {
         ArrayList<String> options = new ArrayList<>();
-        System.out.println("\n MAIN MENU\n");
+        System.out.println("\nMAIN MENU\n");
         options.add("1. Search for content: ");
         options.add("2. Display your watched list: ");
         options.add("3. Display your saved list: ");
@@ -54,8 +54,7 @@ public class MediaClient {
                 displayWatchLater();
                 break;
             case 4:
-                //JOptionPane.showMessageDialog(null, "Thank you for using Chill!");
-                System.out.println("Thank you for using Chill");
+                System.out.println("Thank you for using CHILL");
                 System.exit(0);
                 break;
             default:
@@ -63,7 +62,6 @@ public class MediaClient {
                 displayMenu();
         }
     }
-
 
     public void searchByTitle() {
         String answer = ui.promptText("Please enter a title: ");
@@ -86,7 +84,8 @@ public class MediaClient {
                 }
             }
         }
-    }//
+    }
+
     public void searchByCategory() {
         List<Media> chosenCategory = new ArrayList<>();
         System.out.println("You can chose between: Comedy, Drama, Horror, Romance, Film-Noir, Adventure, Family, Fantasy, Thriller" +

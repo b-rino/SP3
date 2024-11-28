@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Media {
@@ -13,7 +12,6 @@ public class Media {
         this.category = category;
         this.rating = rating;
     }
-
 
     public String getTitle() {
         return title;

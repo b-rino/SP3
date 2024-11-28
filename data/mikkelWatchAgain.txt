@@ -1,5 +1,0 @@
-title, year, category, rating, seasons, episodes
-GLOW; 2017; Comedy, Drama, Sport; 8.2; 2; 20
-Night Court; 1984; Comedy; 7.7; 9; 193
-Night Court; 1984; Comedy; 7.7; 9; 193
-Dexter; 2006; Crime, Drama, Mystery; 8.7; 8; 96

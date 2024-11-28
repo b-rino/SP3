@@ -18,7 +18,7 @@ public class UserClient {
             User user = new User(username, password);
 
             if (users.contains(user)) {
-                System.out.println("You have successfully logged in!");
+                System.out.println("You have successfully logged in!\nWelcome to CHILL");
                 currentUsername = username;
                 return user;
             } else {
@@ -42,7 +42,7 @@ public class UserClient {
             User newUser = new User(username, password);
             saveNewUser.add(newUser);
             io.saveUserData(saveNewUser, "username, password");
-            System.out.println("You have successfully created an account!");
+            System.out.println("You have successfully created an account!\nWelcome to CHILL");
             currentUsername = username;
             return newUser;
         }
