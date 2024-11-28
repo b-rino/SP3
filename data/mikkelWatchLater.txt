@@ -1,0 +1,2 @@
+title, year, category, rating, seasons, episodes
+GLOW; 2017; Comedy, Drama, Sport; 8.2; 2; 20

@@ -5,6 +5,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        // TODO: Category. needs similiar fixes as title
 
         UserClient userClient = new UserClient();
         User currentUser = userClient.login();
