@@ -24,6 +24,8 @@ class MediaClient{
 +void displayMenu()
 +searchByCategory()
 +searchByTitle()
++addToWatchAgain()
++addToWatchLater()
 +displayWatchAgain()
 +displayWatchLater()
 }
@@ -35,9 +37,10 @@ class User{
 -String username
 -String password
 +User(String username, String password)
-+addToWatchAgain()
-+addToWatchLater()
 +getUsername()
++getPassword()
++getPathWatchAgain();
++getPathWatchLater();
 }
 
 
@@ -56,8 +59,8 @@ class Series{
 class UserClient{
 -TextUI ui
 -FileIO io
+-List<User> users
 +login()
-
 }
 
 

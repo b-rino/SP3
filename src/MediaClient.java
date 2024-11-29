@@ -62,25 +62,34 @@ public class MediaClient {
 
     public void searchByTitle() {
         String answer = ui.promptText("Please enter a title: ");
+        boolean found = false;
         for (Media media : allMedia) {
             if (media.getTitle().equalsIgnoreCase(answer)) {
+                found = true;
                 int selection = ui.promptNumeric("You have chosen " + media.getTitle() +
                         "\n1. Watch media\n2. Save to watch later\n3. Main Menu");
                 if (selection == 1) {
                     System.out.println("You're now watching " + media.getTitle());
-                    currentUser.addToWatchAgain(media);
+                    addToWatchAgain(media);
                     System.out.println(media.getTitle() + " has been added to your watched list");
                     displayMenu();
                 }
                 if (selection == 2) {
-                    currentUser.addToWatchLater(media);
+                    addToWatchLater(media);
 
                     }
                 if (selection == 3) {
                     displayMenu();
                 }
+                return;
             }
+
         }
+        if (!found) {
+            System.out.println("Title does not exist");
+            displayMenu();
+        }
+
     }
 
     public void searchByCategory() {
@@ -106,16 +115,20 @@ public class MediaClient {
         }
 
         int selection = ui.promptNumeric("Please type the number of the movie or series, you want to select");
+        if (selection < 1 || selection > chosenCategory.size()) {
+            System.out.println("Invalid choice");
+            searchByCategory();
+        }
         System.out.println("You have chosen " + chosenCategory.get(selection-1).getTitle());
                 int selected = ui.promptNumeric("\n1. Watch media\n2. Save to watch later\n3. Main Menu");
                 if (selected == 1){
                     System.out.println("You're now watching " + chosenCategory.get(selection-1).getTitle());
-                    currentUser.addToWatchAgain(chosenCategory.get(selection-1));
+                    addToWatchAgain(chosenCategory.get(selection-1));
                     System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to you watched list");
                     displayMenu();
                 }
                 else if(selected == 2){
-                    currentUser.addToWatchLater(chosenCategory.get(selection-1));
+                    addToWatchLater(chosenCategory.get(selection-1));
                     System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to your watch-later list");
                     displayMenu();
                 }
@@ -127,7 +140,7 @@ public class MediaClient {
                     displayMenu();
                 }
 
-                currentUser.addToWatchAgain(chosenCategory.get(selection-1));
+                addToWatchAgain(chosenCategory.get(selection-1));
                 System.out.println(chosenCategory.get(selection-1).getTitle() + " has been added to you watched list");
     }
 
@@ -143,7 +156,7 @@ public class MediaClient {
             displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
-        if (answer > watchLaterList.size()) {
+        if (answer < 1 || answer > watchLaterList.size()) {
             System.out.println("Invalid choice");
             displayWatchLater();
         }
@@ -151,7 +164,7 @@ public class MediaClient {
         int choice = ui.promptNumeric("\n1. Watch media\n2. Main Menu");
         if (choice == 1){
             System.out.println("You're now watching " + watchLaterList.get(answer-1).getTitle());
-            currentUser.addToWatchAgain(watchLaterList.get(answer-1));
+            addToWatchAgain(watchLaterList.get(answer-1));
             System.out.println(watchLaterList.get(answer-1).getTitle() + " has been added to you watched list");
             displayMenu();
         }
@@ -176,7 +189,7 @@ public class MediaClient {
             displayMenu();
         }
         int answer = ui.promptNumeric("Please type a number to select the media ");
-        if (answer > watchAgainList.size()) {
+        if (answer < 1 || answer > watchAgainList.size()) {
             System.out.println("Invalid choice");
             displayWatchAgain();
         }
@@ -191,6 +204,23 @@ public class MediaClient {
         }
         else {
             System.out.println("Invalid choice");
+            displayMenu();
+        }
+    }
+
+
+    public void addToWatchAgain (Media media) {
+        io.saveMediaData(media, currentUser.getPathWatchAgain(), "title, year, category, rating, seasons, episodes");
+    }
+
+    public void addToWatchLater (Media media) {
+        List<Media> alreadyOnList = io.readMediaData("watchLater", currentUser);
+        if (alreadyOnList.contains(media)) {
+            System.out.println(media.getTitle() + " already exists on your list");
+            displayMenu();
+        }else {
+            System.out.println(media.getTitle() + " has been added to your watch-later list");
+            io.saveMediaData(media, currentUser.getPathWatchLater(), "title, year, category, rating, seasons, episodes");
             displayMenu();
         }
     }

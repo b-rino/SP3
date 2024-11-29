@@ -30,27 +30,21 @@ public class User {
         }
     }
 
-    public void addToWatchAgain (Media media) {
-        FileIO fileio = new FileIO();
-        fileio.saveMediaData(media, this.pathWatchAgain, "title, year, category, rating, seasons, episodes");
+
+    public String getPathWatchAgain() {
+        return pathWatchAgain;
     }
 
-    public void addToWatchLater (Media media) {
-        MediaClient mediaClient = new MediaClient(User.this);
-        FileIO fileio = new FileIO();
-        List<Media> alreadyOnList = fileio.readMediaData("watchLater", this);
-        if (alreadyOnList.contains(media)) {
-            System.out.println(media.getTitle() + " already exists on your list");
-            mediaClient.displayMenu();
-        }else {
-            System.out.println(media.getTitle() + " has been added to your watch-later list");
-            fileio.saveMediaData(media, this.pathWatchLater, "title, year, category, rating, seasons, episodes");
-            mediaClient.displayMenu();
-        }
+    public String getPathWatchLater() {
+        return pathWatchLater;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override

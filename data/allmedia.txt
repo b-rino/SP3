@@ -199,5 +199,3 @@ Person Of Interest; 2011; Action, Crime, Drama; 8.4; 5; 103;
 Californication; 2007; Comedy, Drama; 8.3; 7; 84;
 Three's Company; 1976; Comedy; 7.6; 8; 172;
 Dexter; 2006; Crime, Drama, Mystery; 8.7; 8; 96;
-Benjas Revenge; 2000; COMEDY; 8.0
-Benjas comeback; 2001; COMEDY; 9.0; 22; 39
